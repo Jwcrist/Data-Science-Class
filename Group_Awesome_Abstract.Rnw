@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage[vmargin=1in,hmargin=1in]{geometry}
+\usepackage{enumerate}
+\begin{document}
+
+\title{Visualization of Dynamic Intermodal Transportion Modeling Reveals Workload Patterns}
+\author{Jonah Williams, Davina Faimon, Jace Crist \\ Becky Brusky, Josh Wittenbach}
+
+\maketitle
+\begin{abstract}
+Currently, intermodal corporations have flat fee systems which do not incorporate a multidimensional pricing platfom.  This flat fee system leads to a loss of producer surplus that could be captured with a more discriminatory pricing system.  One aspect which has yet to be utilized is freight capacity, which is difficult to conceptualize.  We plan to create a spatial visualization of this traffic using data compiled from the company Streamline.  We expect to find patterns based on time, location, and customer parameters which we can then use to develop a pricing model weighted on traffic.  This model will open up possibilities for developing more sophisticated pricing systems in the future.
+\end{abstract}
+\end{document}
