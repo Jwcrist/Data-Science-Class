@@ -1,0 +1,235 @@
+Streamline
+========================================================
+
+
+Dr. Majumder: Here is the code I've written. I've put three different .R programs together to produce this. I know it's messy. I can clean it up later. I'm more focused on finishing my manipulation of the data than I am on how it looks currently. At the end I described where I am and where I'm going with it. The first 90% was more or less familiarizing myself with the data. I'm feel very confident about the data set and what everything represents. I might request a new dataset because there are a lot of underlying variables that are not currently in the dataset that might be interesting in the future, but I first want to explore what I have. If I need more in the future than I'll request at the time. (Examples of what's missing: Trucking Origin, Trucking Destination, etc. These are secondary to my analysis.)
+
+Packages: I load these packages regardless of if I use or don't use them all, just so they are ready to go.
+
+```{r}
+library(dplyr)
+library(reshape2)
+library(data.table)
+library(maps)
+library(stringr)
+library(ggmap)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(RODBC)
+```
+
+
+Looking for tiers and grouping based on buying patterns:
+
+```{r}
+Streamline<-read.csv("Streamline1.csv")
+head(Streamline)
+colnames(Streamline)
+Streamline<-data.table(Streamline)
+unbn<-unique(Streamline$BILL_TO_NAME)
+Locomp<-aggregate(Buy~BILL_TO_NAME+COC,Streamline,sum)
+showimc<-aggregate(Search~BILL_TO_NAME+BROKER_LOB+COC, Streamline,sum)
+df<-arrange(showimc,desc(Search))
+df2<-arrange(Locomp,desc(Buy))
+tiers<-inner_join(df2,df)
+tiers<-tiers %>%
+  group_by(BILL_TO_NAME,BROKER_LOB) %>%
+  summarise(COC=sum(COC), Buy=sum(Buy), Search=sum(Search))
+MP<-mean(tiers$COC)
+SDMP<-sd(tiers$COC)
+tiers<-mutate(tiers, buyrate=round((Buy/Search),6))
+tiers<-mutate(tiers, sCOC=(round((COC-MP)/SDMP,6)))
+tiers<-na.omit(tiers)
+tiers<-subset(tiers,Search>30)
+tiers<-arrange(tiers, desc(buyrate))
+
+d<-dist(as.matrix(tiers))
+hc<-hclust(d)
+groups<-cutree(hc,k=5)
+boundtiers<-cbind(tiers,groups)
+
+```
+
+
+
+Separated the groups for individual analysis, and wanting to understand buying patterns by each tier:
+
+```{r}
+
+
+boundtiers<-data.table(boundtiers)
+boundtiers
+g5<-boundtiers[groups==5,]
+g4<-boundtiers[groups==4,]
+g3<-boundtiers[groups==3,]
+g2<-boundtiers[groups==2,]
+g1<-boundtiers[groups==1,]
+arrange(g1,by=desc(sCOC))
+arrange(g2,by=desc(sCOC))
+arrange(g3,by=desc(sCOC))
+arrange(g4,by=desc(sCOC))
+arrange(g5,by=desc(sCOC))
+gr1<-round(mean(g1$buyrate),2)
+gr2<-round(mean(g2$buyrate),2)
+gr3<-round(mean(g3$buyrate),2)
+gr4<-round(mean(g4$buyrate),2)
+gr5<-round(mean(g5$buyrate),2)
+y1<-round(mean(g1$COC),2)
+y2<-round(mean(g2$COC),2)
+y3<-round(mean(g3$COC),2)
+y4<-round(mean(g4$COC),2)
+y5<-round(mean(g5$COC),2)
+b1<-sum(g1$Buy)
+b2<-sum(g2$Buy)
+b3<-sum(g3$Buy)
+b4<-sum(g4$Buy)
+b5<-sum(g5$Buy)
+s1<-sum(g1$Search)
+s2<-sum(g2$Search)
+s3<-sum(g3$Search)
+s4<-sum(g4$Search)
+s5<-sum(g5$Search)
+c1<-sum(g1$groups)
+c2<-sum(g2$groups)
+c3<-sum(g3$groups)
+c4<-sum(g4$groups)
+c5<-sum(g5$groups)
+
+g<-data.frame(No.Comp=rbind(c1,c2,c3,c4,c5))
+b<-data.frame(Buys=rbind(b1,b2,b3,b4,b5))
+k<-data.frame(buyrate=rbind(gr1,gr2,gr3,gr4,gr5))
+l<-data.frame(tot_profit=rbind(y1,y2,y3,y4,y5))
+s<-data.frame(Search=rbind(s1,s2,s3,s4,s5))
+TBP<-cbind(k,b,s,g,l)
+TBP
+TBP1<-lm(TBP$buyrate~TBP$tot_profit)
+boundtiers<-mutate(boundtiers, lsCOC=log(sCOC))
+```
+
+
+
+breaking up brokers in order to determine if there are broker patterns:
+
+```{r}
+
+Streamline1<-read.csv("Streamline1.csv", header=TRUE)
+head(Streamline1)
+Streamline1<-data.table(Streamline1)
+Streamline1<-Streamline1[sample(1:666166,size=100000),]
+Streamline1<-Streamline1[Buy==1,]
+Streamline1<-mutate(Streamline1, buyrate=tiers$buyrate)
+Streamline1<-mutate(Streamline1, DPM=round(TOTAL_REVENUE/TOTAL_MILES,6))
+a<-table(Streamline1$DPM>1.9999999999)
+#a is my 96% cut-line (taking sample of non-outliers)
+Streamline1<-Streamline1[DPM<2]
+brk1<-mean(Streamline1$DPM[Streamline1$BROKER_LOB=='BRK'])
+imc1<-mean(Streamline1$DPM[Streamline1$BROKER_LOB=='IMC'])
+mtr1<-mean(Streamline1$DPM[Streamline1$BROKER_LOB=='MTR'])
+table1<-rbind(brk1,imc1,mtr1)
+
+
+
+```
+
+
+
+Found out that there needs to be a separation in headhaul and backhaul from this analysis:
+
+```{r}
+
+#Investigating Plots
+
+######1######
+#Randomness from DPM and buyrate - Mathematically means there isn't a strong linear correlation evident.
+#Two results. 1.)The price needs to be increased over-all inorder to determine a higher correlation (supply/demand type curve).
+#             2.)There's another variable that has a stronger correlation to how people buy other than price/cost.
+
+#FRANK: ave(head haul+back haul) +100 = Est. Cost. There is not a reference currently for this pricing. It's manually adjusted on website and by phone based on time of the year and a spreadsheet that is currently handed out daily.
+
+q1<-ggplot(Streamline1, aes(DPM,buyrate, color=BROKER_LOB))
+q1+geom_point()+facet_wrap(~BROKER_LOB)
+
+######2######
+#There is a log() curve that shows that as price goes up the buyrate goes down, as expected.
+#However, this is still very random. Conclusion: price could have been increased to reduce randomness.
+
+p<-ggplot(boundtiers, aes(lsCOC, buyrate, color=groups))
+p+geom_point()+geom_abline(intercept=0.41113072, slope=-0.04502581)
+
+######3######
+#This is a break down on LOB groups and what their buying patterns look like.
+
+p+geom_point()+facet_wrap(~BROKER_LOB+groups)
+
+######4######
+#Pure cost does not change (Random) further suggesting that the cost could increase
+q2<-ggplot(Streamline2, aes(Cost,buyrate, color=BROKER_LOB))
+q2+geom_point()+facet_wrap(~BROKER_LOB)
+q1+geom_point()+facet_wrap(~BROKER_LOB)
+
+######5######
+#We can force Clusterings of groups. This is based on distance between companies and their buying patterns
+#It's best to view in a buying pattern supply vs. demand curve to show how they relate
+p+geom_point()+facet_wrap(~BROKER_LOB+groups)
+plot(hc)
+rect.hclust(hc,border="red",k=5)
+
+######6######
+#It's best to view in a buying pattern supply vs. demand curve to show how they relate
+plot(TBP$tot_profit,TBP$buyrate,xlab="Our Revenue",ylab="Customer's buyrate", main="Tier Buying Patterns")
+abline(TBP1)
+TBP1
+
+######7######
+#Statistics by grouping
+TBP
+residuals(TBP1)
+
+######8######
+#E(+) is expected increase (or decrease) in profit if we adjust profit based solely on clustering current model.
+scpro<-sum(t(t(TBP$tot_profit)*(1+residuals(TBP1))))
+scold<-sum(TBP$tot_profit)
+round(scpro-scold,2)
+
+######9######
+cor(Streamline$TOTAL_COST,Streamline$TOTAL_REVENUE)
+Lmod<-lm(TOTAL_REVENUE~TOTAL_COST, Streamline)
+plot(TOTAL_REVENUE~TOTAL_COST, Streamline)
+abline(Lmod)
+```
+
+
+
+NOTE: THIS IS WHERE I AM CURRENTLY:
+
+
+Currently breaking down all the codes for all of the states and cities so there is a 
+relatable fields column(s) in all three of the datasets.
+
+ Dataset 1: Streamline 666,166 ~ 1 year data. (Approval Pending)
+ Dataset 2: Streamline calculated headhaul/backhaul only ~66% done and are yearly averages (Approval Pending)
+ Dataset 3: Drayage locations website - Also used for Class project. (Accessible to public)
+
+There has been changes that would be more accurate for my predictions. However, I'm manually having to have to produce a spread sheet. This is going to take some time to produce. I will continue the following analysis when done. 
+
+Also, currently augmenting data in order to look at buy rates vs. price per month per location. This is going to be a central part of my analysis of headhaul and backhaul. They use estimates that are handed down daily. I'm wanting to automate this based on predictions of location per month (essentially is about half of my research project - very important to the ultimate goal.)
+
+Getting unique elements to geo locate each:
+
+```{r}
+install.packages(c("ggmap","stringr","data.table","reshape2","maps"))
+geoms<-readLines('http://www.drayage.com/directory/city.cfm',warn=F)
+web<-unlist(str_extract_all(geoms,'\\w{2} - \\w+. *\\w+'))
+StCity<-web[3:101]
+gps<-sapply(StCity,geocode)
+final_coords<-t(gps)
+write.csv(final_coords,"final_gpscoords.csv")
+DFC<-read.csv("Drayage_final_coords.csv")
+head(DFC)
+us.dat<-
+getwd()
+
+```
+
+
