@@ -17,6 +17,8 @@ library(ggplot2)
 library(dplyr)
 library(knitr)
 library(RODBC)
+library(tm)
+
 ```
 
 
@@ -218,18 +220,129 @@ Also, currently augmenting data in order to look at buy rates vs. price per mont
 Getting unique elements to geo locate each:
 
 ```{r}
-install.packages(c("ggmap","stringr","data.table","reshape2","maps"))
+
 geoms<-readLines('http://www.drayage.com/directory/city.cfm',warn=F)
 web<-unlist(str_extract_all(geoms,'\\w{2} - \\w+. *\\w+'))
 StCity<-web[3:101]
-gps<-sapply(StCity,geocode)
-final_coords<-t(gps)
-write.csv(final_coords,"final_gpscoords.csv")
-DFC<-read.csv("Drayage_final_coords.csv")
-head(DFC)
-us.dat<-
-getwd()
+#gps1<-sapply(StCity,geocode)
+#final_coords<-t(gps1)
+#write.csv(final_coords,"final_gpscoords.csv")
+```
+
+By excel fixed the data. Now we have the correct locations
+```{r}
+#DFC<-read.csv("Drayage_final_coords.csv")
+#head(DFC)
+#StCity2<-paste(DFC$City,DFC$State)
+#StCity2
+#gps<-sapply(StCity2,geocode)
+#final_coords2<-t(gps)
+#write.csv(final_coords2,"Drayage_final_coords_add.csv")
+DFC2<-read.csv("Drayage_final_coords.csv")
+head(DFC2)
 
 ```
+
+Next we will want to add buyrates, price, and year-month to the locations stored in DFC2
+
+
+
+```{r}
+
+Orig.Stream<-read.csv("Streamline.csv")
+Orig.Stream2<-select(Orig.Stream, YRMO,as.numeric(Search), as.numeric(Buy),ORIG_RAMP_LOCATION,DEST_RAMP_LOCATION, as.numeric(TOTAL_COST),as.numeric(TOTAL_REVENUE),as.numeric(COC),BILL_TO_NAME)
+DFC3<-melt(DFC2, id=c("State..City", 'City', 'State','lon','lat'))
+Orig.Stream3<-merge(Orig.Stream2, DFC3, by.x = 'ORIG_RAMP_LOCATION', by.y='value')
+names(Orig.Stream3)[10]<-paste("S.C.O")
+names(Orig.Stream3)[11]<-paste("C.O")
+names(Orig.Stream3)[12]<-paste("S.O")
+names(Orig.Stream3)[13]<-paste("lon.O")
+names(Orig.Stream3)[14]<-paste("lat.O")
+Orig.Stream4<-merge(Orig.Stream3,DFC3,by.x='DEST_RAMP_LOCATION',by.y='value')
+
+names(Orig.Stream4)[1]<-paste("Dest.Ramp")
+names(Orig.Stream4)[2]<-paste("Orig.Ramp")
+names(Orig.Stream4)[6]<-paste("Tot.Cost")
+names(Orig.Stream4)[7]<-paste("Tot.Rev")
+
+head(Orig.Stream4)
+
+Headhaul<-Orig.Stream4 %>%
+  filter(COC>135) %>%
+  arrange(YRMO)
+?arrange
+
+Backhaul<-Orig.Stream4 %>%
+  filter(COC<135) %>%
+  arrange(YRMO)
+
+#Streamline1<-mutate(Streamline1, buyrate=tiers$buyrate)
+head(Headhaul,1)
+head(Orig.Stream)
+p<-ggplot(Backhaul, aes(COC,City,color=City))
+p+geom_line()+facet_wrap(~C.O.)
+
+```
+
+
+
+I'm now going to combine the two datasets together
+
+
+```{r}
+#Streamline<-read.csv("Streamline.csv")
+#Streamline<-data.table(Streamline)
+#unbn<-unique(Streamline$BILL_TO_NAME)
+#Locomp<-aggregate(Buy~BILL_TO_NAME+COC,Streamline,sum)
+#showimc<-aggregate(Search~BILL_TO_NAME+BROKER_LOB+COC, Streamline,sum)
+#df<-arrange(showimc,desc(Search))
+#df2<-arrange(Locomp,desc(Buy))
+#tiers<-inner_join(df2,df)
+#tiers<-tiers %>%
+#  group_by(BILL_TO_NAME,BROKER_LOB) %>%
+#  summarise(COC=sum(COC), Buy=sum(Buy), Search=sum(Search))
+#MP<-mean(tiers$COC)
+#SDMP<-sd(tiers$COC)
+#tiers<-mutate(tiers, buyrate=round((Buy/Search),6))
+#tiers<-mutate(tiers, sCOC=(round((COC-MP)/SDMP,6)))
+#tiers<-na.omit(tiers)
+#tiers<-subset(tiers,Search>30)
+#tiers<-arrange(tiers, desc(buyrate))
+
+head(tiers)
+head(Headhaul,1)
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
