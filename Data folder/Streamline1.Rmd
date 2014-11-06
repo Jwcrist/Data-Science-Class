@@ -249,7 +249,7 @@ Next we will want to add buyrates, price, and year-month to the locations stored
 
 ```{r}
 
-Orig.Stream<-read.csv("Streamline.csv")
+Orig.Stream<-read.csv("Streamline1.csv")
 Orig.Stream2<-select(Orig.Stream, YRMO,as.numeric(Search), as.numeric(Buy),ORIG_RAMP_LOCATION,DEST_RAMP_LOCATION, as.numeric(TOTAL_COST),as.numeric(TOTAL_REVENUE),as.numeric(COC),BILL_TO_NAME)
 DFC3<-melt(DFC2, id=c("State..City", 'City', 'State','lon','lat'))
 Orig.Stream3<-merge(Orig.Stream2, DFC3, by.x = 'ORIG_RAMP_LOCATION', by.y='value')
