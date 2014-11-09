@@ -18,7 +18,8 @@ library(dplyr)
 library(knitr)
 library(RODBC)
 library(tm)
-
+library(shiny)
+getwd()
 ```
 
 
@@ -58,8 +59,6 @@ boundtiers<-cbind(tiers,groups)
 Separated the groups for individual analysis, and wanting to understand buying patterns by each tier:
 
 ```{r}
-
-
 boundtiers<-data.table(boundtiers)
 boundtiers
 g5<-boundtiers[groups==5,]
@@ -318,7 +317,12 @@ head(Headhaul,1)
 
 ```
 
+```{r}
+library(shiny)
+shiny::runGitHub('usa-crime','mamajumder')
 
+
+```
 
 
 
