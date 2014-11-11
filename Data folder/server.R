@@ -8,7 +8,6 @@ library(dplyr)
 #   filter(state != 'district of columbia')
 crimeDat <- read.csv("life-expectancy.csv")
 
-
 mdat <- map_data("state")
 
 shinyServer(function(input, output) {

@@ -1,9 +1,10 @@
 
+
 #crimeDat <- readRDS("usaCrimeDat.rds")
 crimeDat <- read.csv("life-expectancy.csv")
 
 
-myCrime <- as.character(colnames(crimeDat))
+myVariables <- as.character(colnames(crimeDat))
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -19,14 +20,21 @@ shinyUI(fluidPage(
     column(5,
            wellPanel(
              selectInput("myVar1", 
-                         label = "Choose a crime to display",
-                         choices = myCrime, 
-                         selected = myCrime[1]),
-             selectInput("myVar2", 
-                         label = "Choose a crime to display",
-                         choices = myCrime, 
-                         selected = myCrime[1]),
+                         label = "Choose Variable to display",
+                         choices = myVariables, 
+                         selected = myVariables[1]),
              
+             selectInput("myVar2", 
+                         label = "Choose Variable to display",
+                         choices = myVariables, 
+                         selected = myVariables[3]),
+            
+             sliderInput("myYears",
+                         label = "Year of Transportation",
+                         min = 1996,
+                         max = 2014,
+                         value = 1996,
+                         step=1),
              
              sliderInput("myYears",
                          "Crime Year",
