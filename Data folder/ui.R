@@ -1,5 +1,9 @@
-StreamlineDat <- readRDS("Transformed_Streamline_Data.rds")
-myVariables <- as.character(unique(colnames(StreamlineDat)))
+
+#crimeDat <- readRDS("usaCrimeDat.rds")
+crimeDat <- read.csv("life-expectancy.csv")
+
+
+myCrime <- as.character(colnames(crimeDat))
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -7,37 +11,32 @@ shinyUI(fluidPage(
   fluidRow(
     column(12,
            # Application title takes all 12 column spaces
-           titlePanel("Application to explore 'Streamline' buying patterns")
+           titlePanel("My Shiny application to explore US crime data")
     )),
   
   ###################### 2nd row starts here. 2 columns 
   fluidRow(
     column(5,
            wellPanel(
-             selectInput("myVariable1", 
-                         label = "Choose Variable to display",
-                         choices = myVariables, 
-                         selected = myVariables[2]),
+             selectInput("myVar1", 
+                         label = "Choose a crime to display",
+                         choices = myCrime, 
+                         selected = myCrime[1]),
+             selectInput("myVar2", 
+                         label = "Choose a crime to display",
+                         choices = myCrime, 
+                         selected = myCrime[1]),
              
-             selectInput("myVariable2", 
-                         label = "Choose Variable to display",
-                         choices = myVariables, 
-                         selected = myVariables[1]),
-            
+             
              sliderInput("myYears",
-                         label = "Year of Transportation",
-                         min = 13,
-                         max = 14,
-                         value = 13,
-                         step=1),
-             
-             sliderInput("myMonths",
-                         label = "Month of Transportation",
-                         min = 01,
-                         max = 12,
-                         value = 6),
-             "This is a project created to explore Streamline's buying patterns
-             of customers who visit their webpage."
+                         "Crime Year",
+                         min = 1969,
+                         max = 2005,
+                         value = 1980),
+             "This is a project created to demonstrate how shiny application 
+              can be used for exploratory data analysis. For more information 
+              about this project please visit github repository 
+              https://github.com/mamajumder/usa-crime"
            )
     ),
     column(6, 
@@ -51,7 +50,7 @@ shinyUI(fluidPage(
            plotOutput("myPlot",height = "900px",width="350px")
     ),
     column(6, 
-           plotOutput("myCrime",height = "400px", width="550px")
+           tableOutput("t3")
     )  
   )
   
