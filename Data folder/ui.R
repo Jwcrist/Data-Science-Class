@@ -1,4 +1,4 @@
-StreamlineDat <- readRDS("Transformed_Streamline_Data.rds")
+StreamlineDat <- read.csv("life-expectancy.csv")
 myVariables <- as.character(unique(colnames(StreamlineDat)))
 
 # Define UI for application that draws a histogram
@@ -14,21 +14,21 @@ shinyUI(fluidPage(
   fluidRow(
     column(5,
            wellPanel(
-             selectInput("myVariable1", 
+             selectInput("myVar1", 
                          label = "Choose Variable to display",
                          choices = myVariables, 
-                         selected = myVariables[2]),
+                         selected = myVariables[3]),
              
-             selectInput("myVariable2", 
+             selectInput("myVar2", 
                          label = "Choose Variable to display",
                          choices = myVariables, 
-                         selected = myVariables[1]),
+                         selected = myVariables[4]),
             
              sliderInput("myYears",
                          label = "Year of Transportation",
-                         min = 13,
-                         max = 14,
-                         value = 13,
+                         min = 1996,
+                         max = 2014,
+                         value = 1996,
                          step=1),
              
              sliderInput("myMonths",

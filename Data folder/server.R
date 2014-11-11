@@ -3,31 +3,27 @@ library(scales)
 library(ggmap)
 library(dplyr)
 
-StreamlineDat <- readRDS("Transformed_Streamline_Data.rds")
-myVariables <- as.character(unique(colnames(StreamlineDat)))
-mdat <- map_data("state")
-
+StreamlineDat <- read.csv("life-expectancy.csv")
+#tail(StreamlineDat)
+#myVariables <- as.character(unique(colnames(StreamlineDat)))
+#mdat <- map_data("state")
 shinyServer(function(input, output) {
   
-  # setting the reactive environment 
-  dataInput <- reactive({
-    
-    subset(StreamlineDat,
-            YR==input$myYears & 
-            MO==input$myMonths)
-
-    inputdat1<-switch(input$myVariable1)
-    inputdat2<-switch(input$myVariable2)
-    
-  
-    })
+# setting the reactive environment 
+#   
+#  selectedData<- reactive({
+#    myVariables[,c(input$myVar1,input$myVar2)]
+#  })
+#   
   # PLotting the bar plots
+ 
   output$myPlot <- renderPlot({
-    ggplot(dataInput(), aes(inputdat1,inputdat2))+ 
-      geom_point(color="steelblue", size=4)+
-      coord_flip() + theme_bw()  
+    environment<-environment()
+    ggplot(StreamlineDat,aes(StreamlineDat[,input$myVar1],StreamlineDat[,input$myVar2]),
+           environment=environment)+geom_point()
+
     
-  })
+    })
   })
   
   # Plotting the usa map
