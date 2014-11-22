@@ -1,0 +1,74 @@
+Investigation of an Intermodal Corporations Pricing Model
+========================================================
+
+
+
+Intermodal companies are currently using a flat fee system in their systems to keep pricing simple. Recently, there is an intermodal company that decided that they wanted to create a multidimensional pricing model from a dataset that has been considered to have the most potential. The dataset includes several variables which may be used as explanatory variables in a new pricing system. By request they are also looking to reduce cost by looking at how busy their network is. We will develop one tool to demonstrate three features. The first tool is an exploratory tool. The second is a geographical model that may give insight on car transportation. The last is a model which will give an example of potential dynamic pricing system based on business partners buying patterns.
+
+Introduction:
+
+The company
+
+The data is from a door-to-door intermodal company. This intermodal company takes initiative and creates a uniform platform in which consumes all transportation costs and provides a flat rate for producers. The goal is to make the producer to consumer path simplified at a reduced rate for more product. The products will be picked up from any company or drayage location, and delivered to closest approximate customer drayage locations. Drayage is the act of taking a bulk good from one means of transportation to another transportation, for example: truck to rail, boat to rail, boat to truck, barge to truck, or any other imaginable combination. Normally, the process would follow the form producer to drayage via truck, from drayage to drayage via rail, and last from drayage to consumer via truck.
+ 
+ The data:
+
+The data is fairly basic, but without insight on the column names it is difficult to translate what each column name represents. Some of this data will be automatically altered to make it more clear to the business user and to anyone who might be improving on the model.
+
+YRMO is year and month.
+Search is total number of times in which someone searches.
+Buy, is exactly that; a purchase. 
+PHANTOM_CONTRACT is created as soon as a person logs on to the website and clicks to search for locations for transportation of good. 
+CONTRACT is created when the origin, destination, and routes are determined. 
+LOAD.NUMBER is created when a person clicks buy and has agreed to all business interactions. At this point a 
+LOAD is binary, either confirmed goods have been picked up, or goods were not available for pick up (usually because they did not purchase and would have no LOAD.NUMBER). 
+LH_REVENUE and ACC_REVENUE are two types of Revenue and will not be a focus of this study, but the accumulation of the two create TOTAL_REVENUE, which is obviously all revenue. 
+ORIG_DRAY_COST and DEST_DRAY_COST are the cost from origin to drayage and drayage to destination.
+RAIL_COST is the total cost of transporting along rail.
+TOTAL_COST is the combination of all three, ORIG_DRAY_COST, DEST_DRAY_COST, and RAIL_COST.
+COC is profit.
+ORIG_MILES and DEST_MILES are miles of producer to drayage location and drayage to consumer location.
+TOTAL_MILES is the combination of ORIG_MILES and DEST_MILES
+OTR_EQUIV_MILES other miles that have been taken to get to destination for various reasons.
+TRUNC.QREC.CREATE_DT. is the date in which the transportation of the good was purchased.
+CUSTOMER_ID is an identifier for unique users.
+CUSTOMER_NAME is the name of the customer.
+BROKER_LOCATION is the location of the person purchasing the good.
+BROKER_NAME is the name of the company doing business with the intermodal corporation.
+BROKER_LOB is the type of broker, and will be discussed in further detail later.
+BROKER_CITY and BROKER_STATE is the city and state in which the broker is purchasing from
+BILL_TO_LOCATION is the location in which the bill will be sent to. May be different than broker location.
+BILL_TO_NAME is the name of the person who will be paying for the transaction.
+BILL_TO_LOB type of person who will be paying to purchase, usually the same as BROKER_LOB.
+BILL_TO_CITY and BILL_TO_STATE are city and state of paying customer
+ORIG_RAMP_LOCATION and DEST_RAMP_LOCATION are the origin and destination drayage locations.
+ORIG_RAMP_NAME and DEST_RAMP_NAME are three letter code identifier for the drayage locations.
+
+Familiarization and Manipulation of the Data.
+
+We will now discuss the steps required in order to work with the data set. The data received is not clean, it’s bulky, and it’s difficult to always keep track what the explanatory variables represent. So, the data set needs a lot of attention and manipulation. 
+
+The size of the data can be easily fixed. Reducing the data down to a manageable size is important, so the entire data can be called more quickly and queries on the data need to be quickly as there will be a lot of them. We will use rds and not csv, as the rds file is about 9 MB compared to previously 179 MB. 9 MB is a much more manageable size file. Later we will discuss sampling techniques to reduce this size even farther.
+
+The next hurdle is that the drayage locations are marked by codes and abbreviations. We have collected the data needed  will need to bind the two data sets together we can include gps coordinates and drayage city and state names instead of abbreviations or codes. Then we will take the two datasets and we will bind the two columns by the abbreviation.
+
+Now that the data is a manageable size and contains all of the data we wish to study, it is important to change the column names in order to make graphs and future figures eligible for everyone. The differences are as follow:
+
+"Destination.Ramp" for destination drayage ramp
+"Origin.Ramp" for origin drayage ramp
+"Total.Cost" for total cost
+"Total.Revenue" for total revenue
+"Profit" for profit
+"Broker.Type" for type of buyer
+"City.State.Origin" city and state of drayage
+"City.Origin" origin city of drayage
+"State.Orig" origin state of drayage 
+"lon.O" origin longitude
+"lat.O" origin latitude
+"City.State.Destination" destination city and state of drayage
+"City.Destination" destination city drayage
+"State.Destination" destination state drayage
+"lon.D" destination drayage longitude
+"lat.D" destination drayage latitude.
+
+
