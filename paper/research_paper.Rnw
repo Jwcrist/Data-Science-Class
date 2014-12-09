@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\begin{document}
+\title {Pricing Application Provides Insight on Improvments on Current Intermodal Pricing Model}
+\author{Jace Crist, Dr. Mahbubul Majumder, Dr. Xiang Fang\\  University of Nebraska at Omaha}
+\maketitle
+<<include=FALSE>>=
+opts_chunk$set(fig.align='center',fig.path="./", cache=FALSE)
+@
+\begin{abstract}
+Through significant advancements in technology and business intelligence, companies now seek to have a more vigorous system in which utilizes data in which allows analysis to be conducted by business partners through developed applications. Often in the corporate world, when a data source is rendered to have no purpose it is often discarded or wastefully stored with little or no purpose. This is inefficient and is a significant expense. The purpose of this project is to utilize a data set that was made for the purpose of investigating current pricing systems and develop a methodology for which a new pricing model can be established, describe an intermodal purchasing network, and give the user the ability to target individual areas or individual customers for analysis of buying patterns.
+\end{abstract}
+
+\section{Introduction}
+An undisclosed intermodal company collected several columns from a database for a summer intern to describe a potential for a new pricing model that could be adopted into their current system. The intern observed that a pricing model with discretion on buying patterns from user to user could be able to be developed. This was their conclusion with the data. The intermodal company was unsure where to go next, and was indecisive on if the next best method. It was stored on local drives with what was thought to have little or no purpose. Until, the intern had given a presentation on the data set, a pricing manager, who happened to sit in on the presentation, recognized the potential. It was then brought to our data science group to be analyzed. With little promise, we took a week and developed an exploratory shiny application. We will provide results that will give several new approaches for pricing as described in the abstract. 
+
+\section{Data}
+
+We will describe the data.
+
+\section{Interactive Application}
+
+<<echo=FALSE,warning=FALSE>>=
+library(png)
+IMC<-readPNG("IMC.png")
+imc<-as.raster(IMC)
+library(grid)
+grid.raster(imc)
+@
+
+We will next use ggvis to make this tool interactve on the region and customer level. Providing tables that will include top and bottom customers.
+
+\section{Customer Patterns}
+<<echo=FALSE,warning=FALSE>>=
+library(png)
+profit<-readPNG("Buying Patterns.png")
+profit1<-as.raster(profit)
+library(grid)
+grid.raster(profit)
+@
+
+\section{Model}
+
+A model will be developed that will give insight on fluctuations in pricing models. We will also recommend what data should be included to make this model optimal.
+
+\section{results}
+
+\section{conclusion}
+
+\end{document}
