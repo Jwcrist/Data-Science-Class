@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \begin{document}
-\title {Pricing Application Provides Insight on Improvments on Current Intermodal Pricing Model}
+\title {An Interactive Pricing Application to Provide Insight on Intermodal Pricing Model}
 \author{Jace Crist, Dr. Mahbubul Majumder, Dr. Xiang Fang\\  University of Nebraska at Omaha}
 \maketitle
 <<include=FALSE>>=
