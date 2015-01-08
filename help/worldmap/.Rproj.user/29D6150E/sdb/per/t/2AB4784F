@@ -1,0 +1,17 @@
+{
+    "contents" : "\nlibrary(ggplot2)\nlibrary(ggvis)\nlibrary(dplyr)\n\nmdat<-map_data(\"state\")\n\nmdat %>%\n  arrange(group,order) %>%\n  ggvis(x=~long,y=~lat) %>%\n  layer_paths()\n",
+    "created" : 1420686854965.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3295031353",
+    "id" : "2AB4784F",
+    "lastKnownWriteTime" : 1420687474,
+    "path" : "C:/Data-Science-Class/Data-Science-Class/Data-Science-Class/help/worldmap/USmap.R",
+    "project_path" : "USmap.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
