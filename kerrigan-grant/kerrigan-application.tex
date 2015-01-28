@@ -1,0 +1,740 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+%\DeclareGraphicsExtensions{.png,.pdf,.png}
+\graphicspath{{images/}}
+\usepackage{hyperref}
+\usepackage[square,numbers,sort&compress,sectionbib]{natbib}
+\usepackage[format=plain,font=small]{caption}
+\bibliographystyle{IEEEtranSN}
+\usepackage[compact,small]{titlesec}
+\usepackage{rotating}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+
+%\usepackage{fontspec}
+%\setmainfont{Georgia}
+
+\renewcommand\rmdefault{bch}
+%\linespread{1.04}
+
+\parskip = 0.4em
+\parindent = 0.0in
+
+\textwidth = 7 in
+\textheight = 9.5 in
+\oddsidemargin = -0.2 in
+\evensidemargin = 0.0 in
+\topmargin = -0.2 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\renewcommand{\textfraction} {0}
+\renewcommand{\bottomfraction} {1}
+\renewcommand{\topfraction} {1}
+\renewcommand{\floatpagefraction} {1}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\usepackage{amssymb}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\s}{{\mathbf{s}}}
+\newcommand{\y}{{\mathbf{y}}} 
+\renewcommand{\r}{{\mathbf{r}}} 
+\renewcommand{\S}{{\mathbf{S}}}
+\newcommand{\cL}{\mathcal{L}}
+
+\usepackage{color}
+\newcommand{\hh}[1]{{\color{magenta} #1}}
+\newcommand{\dc}[1]{{\color{green} #1}}
+\newcommand{\mm}[1]{{\color{blue} #1}}
+%\vspace{-0.15in}{\bf Dianne Cook, Mahbubul Majumder}
+
+
+\renewcommand\thesection{\Alph{section}}
+\usepackage{setspace}
+
+
+
+\title{An Interactive Web Application to Explore Data}
+\author{Student Name: Jace Crist \\
+Faculty Mentor: Mahbubul Majumder}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\doublespacing
+
+%\section{Proposal Cover Sheet}
+
+%\newpage
+
+\section{Description of the Proposed Project}
+
+\subsection{Abstract}
+%Through significant advancements in technology and business intelligence, companies now seek to have a more vigorous system that utilizes data.  This allows analysis to be conducted by business partners through developed applications. Often in the corporate world, when a data source is rendered to have no purpose it is often discarded or wastefully stored with little or no purpose. This is inefficient and sometimes may be  significantly expensive. This project intends to provide an interactive tool to explore data which would otherwise be dormant and of no use. Perhaps it would be a primary source of further analysis and model building.
+
+Exploratory data visualization allows data scientists to see the data and identify interesting pattern which is very useful for model building and data analysis. But this often requires to explore data interactively. With the current development of web tools, we can use statistical software to produce online dashboard which can facilitate interactive data exploration. This project intends to develop such a dash board so that anyone one can upload a data set and explore the data online.
+
+\subsection{Project Description} %Clearly state the purpose(s) of the project (i.e. the questions/issues/ hypotheses/creative activity to be addressed by the project).
+
+Through significant advancements in technology and business intelligence, companies now seek to have a more vigorous system that utilizes data.  This allows analysis to be conducted by business partners through developed applications. Often in the corporate world, when a data source is rendered to have no purpose it is often discarded or wastefully stored with little or no purpose. This is inefficient and sometimes may be  significantly expensive. This project intends to provide an interactive tool to explore data which would otherwise be dormant and of no use. Perhaps it would be a primary source of further analysis and model building.
+
+%The purpose of this project is to utilize a data set that was made for the purpose of investigating current pricing systems and develop a methodology for which a new pricing model can be established, describe an intermodal purchasing network, and give the user the ability to target individual areas or individual customers for analysis of buying patterns.
+
+%We often monitor heart rate or oxygen level in the blood or other vital statistics using one dimensional time series plot as shown in the Figure~\ref{rabit-phase}~(left). These times series plots independently displays the status of health of the subject. But they do not incorporate the interaction between two different time series and do not indicate how the overall health status is. In fact the biological body works with many vital organs working together in a harmony. Thus these one dimensional plots do not effectively display the true overall health pattern of the subject. But when these independent time series plots are displayed as a trajectory in a phase space, it produces a phase plot as shown in Figure~\ref{rabit-phase}~(right). The phase plots provide the overall space and shape of the trajectories. For healthy and unhealthy subjects the phase plots should be different. The goal of this research is to examine the effectiveness of phase plot in classifying the healthy or unhealthy state of a subject.
+
+%\subsection{Significance/Importance.} The applicant should establish the significance or importance of the proposed project in relation to the field of study or creative area. This should include a brief literature review or explanation of how this project will build on existing theory, practice, or creative areas.
+
+%The interactive tool will be very useful and will provide convenience for exploring Intermodal data.
+
+%\subsection{Methodology or Process.} %This section should contain a description of the project design and methods or creative process to be used in completing the project. The applicant needs to provide sufficient detail so reviewers will be able to understand how the project will be conducted and how information collected will be analyzed to address the questions/issues/hypotheses described in the preceding sections. Consider that the Committee is inter-disciplinary so please provide information that is understandable to an educated lay audience.
+
+%Exploratory data visualization allows data scientists to see the data and identify interesting pattern which is very useful for model building and data analysis. But this often requires to explore data interactively. 
+
+
+To provide interactive environment, we intend to use the R \cite{R} package Shiny \cite{shiny}. This will allow us to create a dashboard where all the interactive tools will be present for convenient exploration of data. One such example of such a dashboard can be found in \cite{shinyapp}.
+
+\subsection{Project timeline:} February 1, 2015 - June 30, 2015
+
+
+\begin{table}[h]
+\begin{tabular}{ll}
+Month & Task to finish \\
+\hline
+February	& Finalize the design \\
+March	& Implement the plan using R and shiny \\
+April	        & Testing and debuging. Obtain feedback \\
+May	& Incorporate the suggestions obtained from feedback \\
+June	& Deliver the project and submit the report \\
+\hline
+\end{tabular}
+\end{table}
+
+\bibliography{references}
+
+\end{document} 
+
+Visual statistical inference procedure was first discussed in \cite{buja:2009} and later refined and validated by \cite{majumder:2013}. This method has been successfully used to asses the effectiveness of a plot to identify the pattern in the data \cite{heike:2012}.
+
+To illustrate usage, we look at data from an experiment conducted to study heart failure  \cite{sarah:2011}. Renal blood flow (RBF) and blood pressure (BP) were measured on several rabbits over time.  In one group of rabbits measurements were taken after heart failure (HF)  was induced, and the other group were controls. It is hypothesized that after induction of heart failure the circulation is affected. To examine the relationship between BP and RBF one would make a phase plot, that shows the two measurements with values linked by time (Figure \ref{rabit-phase}).  These are difficult patterns to quantify, but looking at plots can be helpful. In this phase plot, you can see that generally BP is around 80-90 and RBF is a little lower than 40. At two times one of the two measurements drops dramatically, and at one time both drop together. To understand how the two variables are related to heart failure we would examine these temporal traces for several recordings. 
+
+%Usually RBF and BP were plotted over time to observe the differences between healthy and HF rabbits. While these one dimensional time series plots display some pattern the actual continuous plot is chaotic. To have a better look on this chaotic time series phase plots are used. It provides the insight of internal relationships of the variables and displays a global view of the health status. The phase plot is obtained creating the path over time through the scatterplots of RBF vs BP as shown in Figure \ref{rabit-phase}. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.45\textwidth]{rabbit_time.pdf}\includegraphics[width=0.35\textwidth]{rabbit_phase.pdf}}
+\caption{(left) Time series plot of RBF and BP of rabbit data. (Right) Phase plot of RBF and BP shows the overall health pattern of the Rabbit.}
+\label{rabit-phase}
+\end{figure*}
+
+%Each plot in the lineup in Figure \ref{rabbit-lineup} shows the phase plots of 22 rabbits. The red color indicates rabbits with induced heart failure while the green color indicates healthy rabbits. One of the plots is the observed plot and the rest of the 19 plots are generated by randomizing the color structure. Can you find the observed plot? It is very difficult to detect the observed plot (actual location = $4^2+1$). This indicates that observed differences in the phase plots between healthy and heart failure rabbits are not statistically significant.
+
+Figure \ref{rabbit-lineup} shows a lineup of phase plots for recordings from one rabbit whose vital signs were recorded six times, three when heart failure was induced, and three without. The color represents induced heart failure or not. One of the ten phase plots shows the actual data, and the remainder are null plots by permuting the heart failure condition labels. It is a small sample so there are only ten possible permutations. Observers would be asked to pick the plot that has the biggest difference between the two colored groups.  The actual data here is shown in plot number five.  Readers may be tempted to pick plot six, or plot nine. The data suggests that the results are not entirely clear cut, that there was one recording where the rabbit had BP and RBF measurements under control conditions that were similar to the values when heart failure was induced. Using a lineup like this enables the complexities of the data to be incorporated into the testing, that can take into account differences in the variation as well as location. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.95\textwidth]{figures/rabbit-7013-lineup-5.png}}
+\caption{Phase plot of BP and RBF for one rabbit, measured multiple times, under two conditions indicated by color. Which plot shows the most separation between red and blue color groups? (See the text for the location of the actual data plot.)}
+\label{rabbit-lineup}
+\end{figure*}
+
+
+Big data can come in small packages. A lot of medical research involves detailed measurements on a small collection of subjects. Analyzing this data can be greatly assisted by better use of graphics. The lineup protocol provides the framework to do testing when little formal statistical inference is available, perhaps like having an expert to read echocardiograms.
+
+
+\subsection{Timetable} Provide a timetable for completing the work entailed in the project. Note that the UCRCA does not fund projects retroactively and funding must be expended by the end of the fiscal year during which funding is received.
+
+
+\subsection{Product(s) and Dissemination Plan.} Describe what the outcome(s) of the project will be and how the results or products will be shared. The applicant should identify the forum(s) in which products will be shared (e.g., presentations at conferences, articles in refereed journals, juried exhibitions, performances, etc.) and target audiences.
+
+\subsection{Budget and Justification.} The applicant should include a detailed budget and justification for the requested funding for the project. The budget should indicate the full costs for the project and other sources of funding if applicable. An explanation of each item should be included. Please see the UCRCA website for FAQs related to the budget.
+
+\bibliography{references}
+
+
+\section{How the Project Builds Capacity}
+
+
+In this section, the applicant should:
+
+1. Describe how they and/or the university will expand capacity for research and/or creative activity by receiving this funding. This may include the potential for external funding or some other significant benefit for the researcher, and/or artist and/or the university.
+
+2. For any benefits described, indicate how UCRCA funding will help the applicant get to the ?next level? in their research or creative activity.
+
+3. Show clearly how this project fits within the applicant?s overall research or creative activity agenda for the next several years.
+
+If the potential benefits of UCRCA funding may lead to external funding, the applicant should describe how the proposed project relates to future proposals for external funding. For example, perhaps the current proposal is for a pilot study or demonstration project that will strengthen a future proposal; perhaps the project currently proposed could lead to publications or performances that will demonstrate the applicant's ability to conduct research or creative activity in the area for which external funding will be requested; or perhaps the currently proposed project will address a key question that must be resolved before an externally-funded proposal can be written.
+
+The applicant should also identify specific sources for external funds (e.g., federal agencies, private foundations, corporate foundations, etc.) and a realistic timeline for developing and submitting proposals if applicable. Be as specific as possible and include all potential funding opportunities. (Consulting activities are not appropriate.) The applicant should show evidence of analyzing the possible sources and identifying those that appear to be most promising. If the applicant has made preliminary contact with any of the sources, this should be noted as well. Finally, applicants should provide their personal/professional evaluation (including the rationale) of the likelihood of external receiving funding if applicable.
+
+If describing other significant benefit(s) for the researcher, artist and/or the university, the applicant should include information regarding the importance of the UCRCA funding for increasing their and or the university?s capacity for research or creative activity, such as: professional development, opportunities for institutional recognition, increased departmental or college resources, benefits to students, or anticipated publications or creative works.
+
+
+\section{Prior and Current Support}
+Provide a complete listing of previously funded and current (the last 5 years) internal and external sources of support for research and creative activity, including UCRCA awards. Individually list funding sources, amounts, durations of support, and project titles. For UCRCA awards also include category of funding and a description of the product(s) that resulted from the funding. Describe the relationship, if any, of the current proposal to previously funded UCRCA project(s). NOTE: The Committee will not review
+6
+IV.
+proposals from applicants with outstanding final reports for previous UCRCA or other internal funding awards.
+
+
+\section{AbbreviatedVita}
+
+Provide pertinent background information including the following: (a) name; (b) academic rank; (c) educational background (include date when highest degree was awarded); (d) professional experience; (e) complete recent and relevant citation information on publications most pertinent to this project. The abbreviated vita may be single spaced, but should not exceed two pages in length.
+
+
+
+\section{Appendices (if applicable)}
+Appendices are ordinarily not necessary; however, applicants may want to append a book contract or reviews/ratings from a funding agency, photos, sketches or lay-outs, etc. If collaborative work is being proposed or special access to sources is needed, a letter of support is recommended to be included.
+PLEASE NOTE: If the proposal is being resubmitted to UCRCA after being declined for funding, the applicant should include comments regarding how the proposal addressed concerns of the Committee in its revision.
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{RESEARCH STRATEGY}
+
+\vspace{-0.1in}
+\section{Significance}\vspace{-0.1in}
+%Research hypothesis, goals, objectives and significance (1 paragraph)
+
+Data that is collected today can be so large or complex that researchers balk at making classical data plots, graphics that have been proven over decades to be vital for checking data quality, and diagnosing models. Rather the approach has developed to throw the data into a black box, allow an algorithm process the data, and somewhat blindly trust the output. It is understandable, because the volume of data can be overwhelming. However, it is dangerous, and can, and has lead to serious errors in important studies. Algorithms that are used to tackle the data are themselves complex, and we need some help in digesting the results that are returned. Making plots of data is an essential component to obtaining reliable, replicable and quality results. Crowd-sourcing and a new rigorous framework for data visualization can help.
+
+New protocols have been recently developed for data graphics that places them firmly in an inferential framework. \citet{buja:2009} proposed the lineup and Rorschach protocols, and described how valid $p$-values can be obtained to make discoveries from plots. \citet{majumder:2013} further studied the lineup protocol demonstrating that it does operate similarly to classical statistical tests, and developed procedures for applying the protocol in practice using Amazon's Mechanical Turk \citep{turk} (MTurk). The lineup protocol places the data plot amongst a field of plots generated by a procedure consistent with a specified null hypothesis, and asks an uninvolved observer to pick the plot that is most different from the rest. If the observer picks the data plot as different this is consistent with a rejection of the null hypothesis consistent with a significance level of $1/(\#~plots~in~lineup)$. \citet{majumder:2013} also developed the formula that can be used to calculate $p$-values when results from multiple observers are combined. The lineup protocol has many benefits: (1) encourages researchers when making plots to explicitly describe a null hypotheses, (2) illustrates what ``nothing going on'' looks like, (3) encompasses all possible deviations from the null so that is does not need to be specified, allowing for unexpected discoveries, which is different from the rigid protocols of traditional statistical inference, (4) the results obtained are more consistent with detecting the events with strong effect size, which is something that $p$-values do not alone capture. 
+
+This project will tackle current problems, (1) massive multiple testing done on high-throughput data, commonly approached using false discovery rate adjustments, such as RNA-seq, conducted to study gene expressions and (2) small sample size but complex data, such as continuously recorded blood pressure measurements in association with other variables. In addition, the new methods will provide protocols to determine best biological visualization practices.  
+
+With RNA-seq data there are two complications at play, multiple testing and heterogeneous variance (dispersion) of expression. Dispersion of a single gene is estimated by incorporating information from all other genes, in the simplest context, by averaging the dispersion of genes with similar mean expression, to give trended dispersion. This is important because this value forms the ruler upon which expression differentials are measured. This has dramatic effects on statistical significance, with potential to produce contradictory results depending on the parameters used. High throughput analysis produces a list of genes which is then truncated to provide a fixed number of genes reported to be differentially expressed. If you plot each of these genes you may find yourself surprised, genes are not perfectly ordered by significance, some genes that have larger $p$-values look to have larger mean difference than ones with smaller $p$-values, which is likely due to the dispersion estimation. This also means that there are likely genes on the list that really should not be there, and ones that have been missed. Data for these problems will mostly be taken from published studies, such as those available at \url{http://www.ncbi.nlm.nih.gov/geo/}.
+
+With small size complex data, the concerns are that there are too many measured variables for the number of samples obtained. We see this type of data when looking at continuous blood pressure measurements for a handful of subjects. It is often not possible to do formal statistical tests when sample sizes are small. Visual inference can be used to examine the structure in the data relative to random noise, because they provide complex but digestible summaries in the context of a null scenario.  
+
+% Types of problems that will be addressed: high-throughput, and small-scale complex studies like heart failure
+\section{Innovation}\vspace{-0.1in}
+
+This research will develop radically new visual approaches to explore large and complex biomedical data. We will use crowd-sourcing to engage the public in the assessment of structure in data, in a manner that is scientifically sound, based on new visual inference methods. These approaches are new.
+
+%?	Explain how the application challenges and seeks to shift current research or clinical practice paradigms. 
+
+The ideas examined in this research challenge the prevailing approaches for high-throughput data, of shrinkage estimation and false discovery rate adjustments. We do not seek to supplant these methods, but rather provide new ways for researchers to cross-validate and verify their results. We also expect that the methods will produce new protocols for data visualization that will shift clinical practice for small intensive medical studies. 
+
+This research is based on several years of foundational experimentation that has established that the new approach for inference on graphics does work as expected in the conventional hypothesis testing settings, and is practical to implement with crowd-sourcing services like Amazon's Mechanical Turk. People engaged in evaluating graphics do not need special training, basic visual skills is all that is required. Visual inference protocols provides data visualization with the rigor of clinical protocols that medical practitioners are accustomed to. 
+
+%?	Describe any novel theoretical concepts, approaches or methodologies, instrumentation or interventions to be developed or used, and any advantage over existing methodologies, instrumentation, or interventions. 
+
+%?	Explain any refinements, improvements, or new applications of theoretical concepts, approaches or methodologies, instrumentation, or interventions. 
+
+%In gene expression data we want to identify the genes that are ``really'' differentially expressed, missing as few as possible, but yet, avoid genes that look like but are {\bf NOT} really differently expressed. There are several methods that have been used to obtain this such as  {\em EdgeR} \cite{edgeR:2010},  {\em deseq} \cite{deseq:2010}, {\em Cufflinks} \cite{cufflink:2012}  and {\em BaySeq} \cite{bayseq:2010}. Often these methods provide different results. This work is going to help sort through the problem of conflicting results from different methodology and selecting statistically significant genes with larger effect size. 
+
+%Visual inference does not depend on distributional assumptions or equality of dispersions between groups. This allows flexibility to apply this method in more variety of situations such as gene expression data where the dispersions for different groups could be very different. 
+
+
+
+\section{Approach}\vspace{-0.1in}
+
+%\subsection{Graphics, Discovery, Statistical Significance}
+\subsection{Overview of Visual Inference}\vspace{-0.1in}
+
+%Statistical graphics nourish the discovery process in data analysis by revealing unexpected things,  finding structure that was not previously anticipated,  or orthogonally by contrasting prevailing hypotheses. 
+The area of graphics is often associated with exploratory data analysis, which was pioneered by \cite{tukey:eda} and is particularly pertinent in today's data-rich world where discovery during data mining has become an important activity. Graphics are also used in many places where numerical summaries simply do not suffice: model diagnostics, and  communicating results. 
+
+However, measuring the strength of patterns seen in plots, and differences in individual perceptual ability, is something that is difficult and perhaps handicaps graphics  use among statisticians, where measuring probabilities is of primary importance. \citet{buja:2009} proposed a protocol that allows the testing of discoveries made from statistical graphics. This work represents a major advance for graphics, and data exploration generally, because it bridges the gulf between conventional statistical inference procedures and exploratory data analysis. One of the protocols, the lineup, places the actual data plot among  a page of plots of null data, and asks a human judge to pick the plot that is different. %Figure \ref{fig:test_category} shows an example lineup. Which plot do you think is the most different from the others? (The position of the actual data plot is provided in Section \ref{sec:category}.) 
+In a process that mirrors conventional inference, picking the plot of the data from its hiding spot among null plots represents a rejection of a null hypothesis. The null hypothesis typically derives from the task at hand, or the type of plot being made. The alternative encompasses all possible antitheses, all types of patterns that might be detected in the actual data plot, accounting for all possible deviations from the null without the requirement to specify these ahead of time. The probability of rejection can be quantified, along with Type I, and Type II error, and $p$-value and power can be defined and estimated. 
+
+
+%Several new developments in graphics research have been achieved in recent years. Early studies on evaluating how well statistical plots are perceived and read by the human eye \citep{cleveland:1984}, have been repeated and expanded \citep{simkin:1987,spence:1991, heer:2010} with findings supporting the original results. The research by \cite{heer:2010} used subjects recruited from Amazon's Mechanical Turk \citep{turk} for their studies. This body of work provides a contemporary framework for evaluating new statistical graphics.  In a complementary direction, new research on formalizing statistical graphics with language characteristics makes it easier to abstractly define, compare and contrast data plots. \cite{wilkinson:1999} developed a grammar of graphics that is enhanced by \cite{hadley:2009}. These methods provide a mechanism to abstract the way data is mapped to graphical form. Finally, technology advances make it simple and easy for everyone to draw plots of data, and particularly the existence of software systems, such as R \citep{R}, enable making beautiful data graphics that can be tightly coupled with statistical modeling.
+
+
+\begin{table*}[hbtp]
+\caption{Comparison of visual inference with conventional inference.}
+\centering 
+\begin{tabular}{llll} 
+\hline % \hline
+  & Conventional Inference &  Lineup Protocol \\ %[0.5ex] % inserts table %heading 
+\hline
+  Hypothesis & $H_0: \beta=0$ vs $H_1: \beta > 0$& $H_0: \beta=0$ vs $H_1: \beta > 0$\\
+ & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} \\
+				  
+ Test statistic & $T(y)=\frac{\hat{\beta}}{se(\hat{\beta})}$ & $T(y)=$ \begin{minipage}[h]{1cm} \begin{center} \scalebox{0.45}{\includegraphics{stat_category.pdf}} \end{center} \end{minipage} \\
+				 
+ & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} \\
+				 
+ Sampling Distribution & $f_{T(y)}(t); $\begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.55}{\includegraphics{stat_mathematical_test.pdf}} \end{center} \end{minipage} & $f_{T(y)}(t); $ \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.32}{\includegraphics{lineup_category_small.pdf}} \end{center} \end{minipage} \\
+ & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} & \begin{minipage}[h]{2.5cm} \begin{center} \scalebox{0.2}{\includegraphics{down_arrow.pdf}} \end{center} \end{minipage} \\
+ Reject $H_0$ if & actual $T$ is extreme & actual plot is identifiable \\
+\hline 
+\end{tabular}
+\label{tbl:compare}
+\end{table*}	
+
+An illustration of the lineup protocol in relation to conventional hypothesis testing is presented in Table \ref{tbl:compare}. Both methods start from the same place, the same set of hypotheses. The example conventional test statistic is the $t$-statistic, where the parameter estimate is divided by its standard error. In the lineup protocol, the test statistic is a plot of the data. Here, side-by-side boxplots are used, because the variable of interest is categorical and takes just two values. In conventional hypothesis testing the value of the test statistic is compared with all possible values of the sampling distribution, the distribution of the statistic if the null hypothesis is true. If it is extreme on this scale then the null hypothesis is rejected. In contrast, in visual inference, the plot of the data is compared with a set of plots of  samples drawn from the null distribution. If the actual data plot is selected as the most different, then this results in rejection of the null hypothesis.
+
+A validation study of the lineup protocol was conducted by \citet{majumder:2013}. A head-to-head comparison of visual inference against the best available conventional test was conducted for regression analysis, using simulation experiments with human subjects. Results indicate that the visual test will work similarly to conventional test, and thus will provide some options for the analyst when no conventional test exists. This work refined the lineup protocol, defining and providing methods for calculating the $p$-values and power of visual tests.  
+
+Several other followup research projects have been conducted. \citet{zhao:2012} used an eye-tracker to examine how people read lineups and explored what patterns participants cue on in making their choices. Example lineups for this study were taken from the \citet{majumder:2013} study, to examine the validation results in more detail. In \citet{niladri-compstats}, the lineup protocol was used to disprove results in a published paper that claimed structure in a high-dimensional, low sample size (HDLSS) microarray data set. The separation between classes was shown to be consistent with randomness. It further detailed just how much structure can be detected in HDLSS classification problem data, using simulated data. In 
+\citet{heike:2012} the lineup protocol is applied to the problem of choosing an appropriate plot design. The best plot design for communicating some results, can be assessed by examining the power of a lineup constructed using that plot design vs that constructed with a different plot design. In other words, if people can pick the actual data plot more often from lineup A, than lineup B, the plot design of lineup A is better. \citet{niladri:2012} examines metrics for lineups that describe how hard or easy it might be for the observer to detect the actual data plot. \citet{tengfei:2013} suggests using the lineup protocol for testing for the presence of {\em any} structure in a high-throughput data set. 
+
+\subsection{Visual Test $P$-value Calculation}\vspace{-0.1in}
+
+%In the initial conceptualization of inference for data graphics, a single observer would be engaged to evaluate a lineup~\cite{buja:2009}, but in practice when starting to explore the ideas, multiple observers were always engaged. The $p$-value resulting from the visual test depends on the number of observers and also the number of plots in a lineup. These are details that are discuss in depth in \citet{majumder:2013}. Here is a very brief explanation of the $p$-value calculations. 
+
+\begin{figure*}[!h]
+\centerline{\includegraphics[width=0.42\textwidth]{pvalue.pdf}\includegraphics[width=0.55\textwidth]{power-effect.pdf}}
+\caption{Comparison of visual inference with conventional inference on the same data. (Left) Visual $p$-values plotted against conventional $p$-values. Grey line is where both are equal, and blue curve is a loess smooth of the data. (Right) Power plotted against effect size, for conventional test, and visual test using $K=1$ and $5$ observers. Points reflect the observers' evaluations of the lineups, with 1 being that the actual data plot is detected.}
+\label{pvalue}
+\end{figure*}
+
+Suppose $K$ observers are asked to evaluate a lineup of size $m$ and $x$ of them correctly identified the actual plot in the lineup. Under the null hypothesis, with a single observer, there is a $1/m$ chance of choosing the actual plot. Thus the number of correct evaluations, $X$, follows a binomial distribution with parameters $K$ and $p=1/m, q=(m-1)/m$. The $p$-value is the probability of observing the number of times the actual data plot is chosen or more, if the null hypothesis is really true, and is calculated by:  
+
+\vspace{-0.1in}
+\begin{equation} \label{eqn:pvalue}
+Pr.(X \ge x) = \sum_{i=x}^{K} {K \choose i} \left(\frac{1}{m}\right)^{i} \left(\frac{m-1}{m}\right)^{K-i} 
+\end{equation}
+\vspace{-0.1in}
+
+\noindent The $p$-values produced by the lineup protocol closely match those from the conventional test. Figure \ref{pvalue} (left plot) shows the results from one of the experiments in \citet{majumder:2013} where a comparison between the lineup protocol was matched with $p$-values from the test for the existence of a non-zero slope in a regression model ($H_o: \beta_2=0 ~vs~ H_a: \beta_2\neq 0$). Each point represents a lineup, and one data sample. Horizontally, the conventional $p$-value of the sample is plotted and vertically the $p$-value from the equation (\ref{eqn:pvalue}) based on observers evaluations of lineups. The grey line is where both are equal, and the blue line is a loess smoother~\cite{loess} fitted to these points. The big difference between the two sets of $p$-values is that the ones from the visual test are bunched close to 0 or close to 1, right near the 0.05 conventional $p$-value -- the explanation is that subjects either pick the true plot or don't, quite ``black and white''. The right plot in Figure \ref{pvalue} displays the power vs effect size for the visual test (for $K=1, 5$, solid and dotted lines) and the conventional test (dashed line), for the same MTurk experiment. Power of a test is defined as the probability of rejecting the null hypothesis when it is, indeed, wrong. Effect size is a function of the slope value, sample size and standard deviation, as used in the simulation. Points in the plot represent the observers response, with 1 being they selected the actual data plot and 0 being they selected a different plot from the lineup, with size representing the number of subjects. With five observers independently evaluating a lineup, the power of the visual test beats that of the conventional test. Interestingly, around an effect size of 2, the default fold change cutoff that is often used in biological data, a big difference in the observers' responses can be seen, a flip from non-detection to detection of the actual data plot. This suggests that the
+{\em visual inference procedures produce results that reflect effect size differences. } However, it needs to be repeated, that the purpose of visual inference is not to beat conventional tests, it is to provide significance testing where none currently exists in data discovery, and for digesting complex data analyses, such as high-throughput data. 
+
+
+\subsection{Amazon Mechanical Turk for Recruiting Observers}\vspace{-0.1in}
+
+For the studies reported earlier, human subjects were recruited to evaluate the experimental lineups through Amazon Mechanical Turk.  MTurk is an online workplace where people from around the world can perform tasks and get paid. Usually tasks are very simple and require no specialized training. Tasks are designed for anyone to do but some tasks may require some skills depending on the recruiters' need. Each task is usually planned so that it can be completed in a short time. The amount of money paid for each task is very small, along the lines of what would be paid to participants in human subjects studies, nevertheless some Turkers (as MTurk workers are called) clearly make a living by completing tasks. The origin of the name comes from the original chess-playing genius, the Mechanical Turk (or the Turk, or Automation Chess Player), which was a machine that toured Europe in the late 18th century doing chess demonstrations and challenging people to matches, typically winning. The machine was actually a system that enabled a chess master hiding inside to make the plays. (See \cite{turk-wiki} for extensive details on the story.) Amazon's Mechanical Turk adopted this story line for its service hosting jobs that humans can do better than machines. While chess is now accomplished better by a machine (IBM's Deep Blue \cite{IBM}) evaluating data plots is still better performed by people. 
+
+Web sites to interface with MTurk were constructed for each of the studies \cite{majumder:2013,niladri-compstats,heike:2012,niladri:2012,tengfei:2013}. The sites can be found at {\verb#http://www.public.iastate.edu/~mahbub/feedback_turk#{\bf X}\verb#/homepage.html#}, 
+where {\bf X} is replaced by blank, 2, 3, ..., 11. The MTurk workers were redirected to the web site to evaluate blocks of lineups. Their responses were collected, stored automatically into a local database server. Demographic information, age group, gender and education level, along with the time taken for each evaluation  and the time the feedback was received. The location of the observer is determined by the IP address of the computer accessing the web site.
+
+\begin{figure*}[htp]
+%\centerline{\includegraphics[width=0.95\textwidth]{lineup_geno_1_2.png}}
+\centerline{\includegraphics[width=0.50\textwidth]{figures/gilad-lineup-99-4.pdf}\includegraphics[width=0.50\textwidth]{figures/gilad-lineup-999-18.pdf}}
+\caption{Two examples of lineups of RNA-Seq data from a study of differential expression of humans relative to chimpanzees and rhesus monkeys \cite{gilad}. Each plot is a side-by-side dot plot of log count vs species, for 99$^{th}$ and 999$^{th}$ differentially expressed genes. There are 20 plots in each lineup shown, one of which is the actual data, and the other 19 were produced using permutation under the assumption that there is no difference between the species. The lineup is examining the existence of differential expression between HS and PT. Which plot exhibits the most difference in expression between these two groups? See the text for the location of the actual data plot.}
+\label{lineup-geno} 
+\end{figure*}
+
+\subsection{Examples}\vspace{-0.1in}
+
+%Returning to the RNA-Seq analysis described in Figure \ref{top-genes}, we will see how lineups might be used to enable an objective assessment of the gene expression patterns. 
+Figure \ref{lineup-geno} shows example lineups of RNA-seq data collected and analyzed in \cite{gilad}. The analysis compares gene expression between humans (HS), chimpanzees (PT) and rhesus monkeys (RM), for six individuals, two males and two females, and two replicates of each. In comparing the species, HS against PT, the paper found 3335 differentially expressed genes at FDR$<$0.05. Replicating their analysis, using the data archived at \url{http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE17274}, we found a similar number of differentially expressed genes, with analysis using a generalized linear model calculated with the edgeR software \cite{edgeR:2010}. Lineups were made on the 99$^{th}$ and 999$^{th}$ most significant genes, for illustration purposes. The question for the reader is ``which plot of the 20 has the biggest difference between the HS and PT groups?'' (The actual data plots are in position four (left) and eighteen (right).) 
+
+The null plots for this lineup were generated by permuting the species labels. Table \ref{permute} illustrates the simple permutation used here. Permutation breaks associations between variables, and difference between groups seen in the permuted data plots is present simply by chance, consistent with random noise. In the two examples lineups, the 99$^{th}$ most differentially expressed gene is clearly different from noise, but we might be suspicious of the 999$^{th}$. It should also be noted that there were more than 2000 more genes considered to be differentially expressed, but less so than this one, in the study. 
+
+%These lineups were made from an RNA-Seq analysis of soybean plots. In each of these lineups one plot is of the actual data, and the other 19 plots are of data consistent with a hypothesis that there is {\bf NO} differential expression. In Figure \ref{lineup-geno} each plot is a side-by-side dotplot showing log count against genotype, with color also used to represent the genotype. Just one gene is shown. The full analysis of the actual data was repeated for the null data. The gene that is plotted is the one that emerged from the analysis as the most statistically significant, smallest $p$-value, differential expression on genotype. To generate the null data, the experimental design was permuted, and the full analysis re-run. 
+
+%What is meant by permuting the experimental design? For Figure \ref{lineup-geno}  there are 11 counts for each gene, five belonging to Emptyvector and six RPA plants, as shown in Table \ref{permute}, for example. The design elements of the data are permuted to break any association between the treatments and response values. This dates back to some of the earliest statistical tests, for example, Fisher's exact test \cite{fisher}. Resampling the genotype column randomly reassigns the genotype label to the count. If there was an association between genotype and count this gets broken. Any association or pattern, that is seen in this permuted data, is purely consistent with random noise. 
+
+\begin{table}[h]
+\centering
+\caption{Illustration of permutation to obtain null data sets, and resulting plots.}
+\label{permute}
+\begin{tabular}{ccp{1in}cc}
+\includegraphics[width=1in]{figures/gilad-perm1.pdf} &
+\begin{tabular}{|c|r|}\hline
+Sp & l(cpm) \\\hline
+HS & 2.1 \\
+HS & 2.2 \\
+HS & 2.7 \\
+HS & 2.7 \\
+HS & 2.6 \\
+HS & 2.5 \\
+PT & 1.0 \\
+PT & 1.1 \\
+PT & 0.9 \\
+PT & 1.2 \\
+PT & 1.2 \\
+PT & 1.0 \\
+\hline
+\end{tabular}
+&
+\vspace{-1.1in}$\longrightarrow$$\longrightarrow$$\longrightarrow$$\longrightarrow$
+
+{\em Repeatedly resample the genotype column, conditional on unique permutations, and that treatments are not simply switched.}
+
+$\longrightarrow$$\longrightarrow$$\longrightarrow$$\longrightarrow$
+&
+\begin{tabular}{|c|r|}\hline
+Sp & l(cpm) \\\hline
+PT & 2.1 \\
+HS & 2.2 \\
+PT & 2.7 \\
+PT & 2.7 \\
+HS & 2.6 \\
+HS & 2.5 \\
+PT & 1.0 \\
+HS & 1.1 \\
+HS & 0.9 \\
+HS & 1.2 \\
+PT & 1.2 \\
+PT & 1.0 \\
+\hline
+\end{tabular}
+&
+\includegraphics[width=1in]{figures/gilad-perm2.pdf}
+\end{tabular}
+\end{table}
+
+%The nineteen null plots in Figure \ref{lineup-geno} were generated by analyzing 19 data sets generated by doing 19 different permutations of the genotype column, and pulling out the most significant gene. They represent what we might expect to see in terms of difference between the counts for a gene on the two genotypes if there really is no difference in the way the gene is responding. In this lineup it is easy to pick the plot that is different, right? Plot number 8 has the biggest difference between the counts between the two groups. It also happens to be the actual data. This lineup was shown to 23 people to evaluate and 13 of them identified the actual data plot. This produces in a visual test $p$-value $<0.0001$ and thus we reject the null hypothesis of no difference in genotype mean expression. The visual test $p$-value is computed using equation \eqref{eqn:pvalue}, with full details in \citet{majumder:2013}.
+
+%Figure \ref{lineup-interaction} is a lineup examining the change in gene response to iron condition for different genotypes. The plots in the lineups are classical interaction plots: log count is plotted against iron condition (i=insufficient, s=sufficient), with color and symbol used for genotype. Line segments are drawn between the means of the treatments. Particular focus is placed on the genotype colored green (points are circles), with interest being that the slope of the green line is the steep, with little variation between the points, but the slope of the orange-brown line is relatively small. In a similar manner to the approach used in the lineup of Figure \ref{lineup-geno}, the experimental design is permuted, and the RNA-Seq data analysis re-run to find the gene with the most significant expression, which is then plotted. In this lineup the actual data is in position 2. This lineup was shown to 18 people to evaluate and 13 of them identified the actual data plot. This produces a visual test $p$-value $<0.0001$ resulting in a rejection of the null hypothesis of no difference in mean gene expression in presence or absence of iron sufficiency.
+
+%\begin{figure*}[htp]
+%\centerline{\includegraphics[width=0.95\textwidth]{lineup_interaction_2_1.png}}
+%\caption{Example of a lineup of RNA-Seq data, for testing interaction between genotype and iron condition. Each plot displays log count by iron condition (insufficient, sufficient). Color and symbol represent genotype. The line segments connect the mean values for each treatment. Of the 20 plots, one is the actual data and the remaining are of data consistent with a hypothesis that there is no significant difference in expression. In which plot is the slope of the green line the steepest, and the spread of the green points relatively small?}
+%\label{lineup-interaction} 
+%\end{figure*}
+
+%What do we learn from the lineup in Figure \ref{lineup-interaction}? Primarily, because we are only looking at the most significant gene, this is a test for ``Is there any interaction between genotype and iron condition in this data at all?'' If an observer cannot pick this gene from a lineup of plot made from null data, then there is an argument for there being nothing in the data. For this data it is close. The null plots show substantial variability. Some have almost as strong a response to iron condition as the actual data. For example, you may have picked plot 17, as having the steepest slope of the green line. Because we broke association between genotype and condition by permutation, we know that this association is spurious. It is large, but it is {\em not real}! This array of 19 null plots gives us a good sense of just how much variation and structure we might see that is purely noise.
+
+Why visual inference? The dispersion estimates selected to measure differential expression changes the ordering of genes in terms of significance. Change the dispersion estimate and many genes will switch positions of importance. FDR addresses only the multiple testing adjusting the number of genes that are considered to be significant downwards to account for false positives. Visual inference provides an additional lens upon which to examine the different in expression relative to the dispersion.
+
+%One might argue, that for the pattern seen in Figure \ref{top-genes}, lack of agreement between the replicates, is relatively simple and could easily be numerically filtered. However, it needs to be understood that this pattern was discovered only upon plotting the data. We did not anticipate it ahead of time. Post-hoc we can design a good filter. Visual inference gives a valid way to quantify the significance post-hoc. With another data set, different patterns might emerge, and visual inference will enable quantifying the significance of these patterns also.
+
+%If this were all that existed in the data, we could easily design a numerical filter for extracting the genes that had problems. However, it needs to be understood that this pattern was discovered only upon plotting the data. We did not anticipate it ahead of time. Post-hoc we can design a good filter. With another data set, the patterns that confound results might be different. Even with this data, there are other possible complicating possibilities, an outlier on EV/sufficient, or EV/insufficient or RPA/sufficient. It is a relatively simple experimental design so there are a limited number of possible problems to encounter, although that it could be different for every gene, and once dispersion calculations start borrowing from other genes, little hiccups become magnified. Using filters is a nice idea, but then additional work needs to be done to adjust for the multiple testing. You are in the situation of having to apply a $p$-value filter, a fold change filter, and a series of data quality filters. 
+
+
+\subsection{RNA-Seq Data Analysis}\vspace{-0.1in}
+
+%``Statistical significance is the least interesting thing about the results. You should describe the results in terms of measures of magnitude -- not just, does a treatment affect people, but how much does it affect them.''
+%~ Gene Glass
+
+``Solely reporting statistical significance can result in misleading interpretations regarding the absolute and relative importance of significant relationships.''  -- Juergen Brock
+
+There has been a growing volume of critical discussion about statistical significance in the recent years (for example, \cite{dalman}, \cite{xiao}, \cite{button}, \cite{good}, \cite{Ellis}). Statistical significance is tightly connected to sample size -- the larger the sample the more chance of finding statistical significance -- and as sample size has increased statistical significance has come more cheaply. Statistical significance is very important, and still needs to be considered, but alone it is not enough. Care must be taken to understand the implications and investigate the findings further. It is perhaps why fold change is almost always part of the consideration in studying gene expression. Fold change, which is a ratio of one quantity to another, does not typically come attached with a $p$-value, explaining the significance, so when fold change is used to decide on genes it is done in conjunction with $p$-values found from some other type of test of significance.  
+
+\begin{figure*}[!h]
+%\centerline{\includegraphics[width=1.5in]{effect1.pdf}\includegraphics[width=1.5in]{effect2.pdf}\includegraphics[width=1.5in]{effect3.pdf}\includegraphics[width=1.5in]{effect4.pdf}}
+%\begin{minipage}{0.5\textwidth}
+%\centerline{\includegraphics[width=1.5in]{effect1.pdf}\includegraphics[width=1.5in]{effect2.pdf}}
+%\centerline{\includegraphics[width=1.5in]{effect3.pdf}\includegraphics[width=1.5in]{effect4.pdf}}
+%\end{minipage}
+%\hfill\includegraphics[width=0.5\textwidth]{effect5.pdf}
+%\begin{tabular}{p{2.5in}cp{3in}}
+%\includegraphics[width=1.5in]{effect1.pdf}\includegraphics[width=1.5in]{effect2.pdf}\includegraphics[width=1.5in]{effect3.pdf} \includegraphics[width=1.5in]{effect4.pdf} & &\includegraphics[width=2.5in]{effect5.pdf}
+%\end{tabular}
+\centerline{\includegraphics[width=0.6\textwidth]{effect.pdf}}
+\caption{(a-d) Four expression patterns yielding radically differences in $p$-value and fold change. By fold change alone, the green pattern would be considered important, but the high $p$-value rules it out. (e) Plot of fold change against $p$-value for the expression patterns.  }
+\label{effect1}
+\end{figure*}
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.5\textwidth]{cartoon.pdf}}
+\caption{Illustration of how estimation of the variance can
+  affect the interpretation of the mean difference, under different
+  scenarios. (a) Conventional situation, where each condition (M, N)
+  has the same small variance, mean difference is viewed as
+  significant, because it is big relative to the small variance. (b)
+  One condition (N) has higher variance than the other, ignoring the
+  difference, and pooling the variances would increase the length of
+  the ruler upon which the difference is gauged, to the extent that
+  the difference is not considered to be significant. (c) Addition of
+  an extra treatment level (B), that has larger variance, but this has no
+  effect because each level of the treatments (A, B) is handled as separate
+  samples -- difference is still seen as significant. (d) Variances
+  across treatments (A, B) are pooled, increasing the length of the
+  ruler upon which the difference is measured, resulting in no
+  significant difference.} 
+\label{cartoon}
+\end{figure*} 
+
+Figure \ref{effect1} displays four expression patterns (a-d) for a two factor experiment, that yield very different $p$-value and fold change combinations (e). Note that fold change is on a raw scale, rather than $log_2$. The green pattern (a) has the largest fold change, but the variability in replicates results in an insignificant $p$-value. The blue and purple patterns (b, c) have similarly small $p$-values, but low fold change, so would be considered to be statistically significant, but biologically not interesting. The red pattern (d) is statistically significant and biologically interesting. Part of the reason that the pattern in (c) is not interesting on a fold change scale is that the average value is high, which mitigates the ratio of the differences. 
+
+With multiple testing the story gets more complicated. The measuring stick on which to judge differences between means depends on not just the variance of a single gene, but also the variance (or dispersion) of genes with similar mean values. Figure \ref{cartoon} is an illustration how ``borrowing from other genes'' to estimate the variance affects the significance testing. Borrowing from other genes is a necessary step to obtain reasonably estimable quantities with such a large volume of tests being conducted, and seems to produce more intelligible results. The early work that resulted in the empirical Bayes tests for microarray data available in the limma package \cite{limma} provided results that greatly improved the selection of genes for ones that had better fold change as well as small $p$-values. The approach worked by incorporating an overall estimate of variance into the estimate of variance for a single probe producing a moderated $t$-statistic that deflated the significance of genes with high overall mean, but inflated the significance of genes with low overall means. But the problem is much more complex with RNA-Seq data. The response is count data, the models are quite different, and dispersion (variance) is estimated by shrinking the individual variance estimates towards a mean of the dispersion of neighboring genes. It is not clear that anyone has a good read on what really happens in practice. 
+
+With such complex methodology is increasingly important to keep it simple. That means using statistical graphics and plotting the raw data, along with model fits and dispersion estimates. It is important to keep a skeptics viewpoint, ``if you can't see it, don't believe it''. It is also important to bear in mind that graphics provide feedback which reflects the practical significance of results. However, graphics do not have: 
+\begin{enumerate} \itemsep -0.05in
+\item the rigorous protocol that statistical significance testing provides, or 
+\item the ability to cope with volume of plots that high throughput data demands. 
+\end{enumerate}
+
+This is what this research will provide. Using the lineup protocol, we provide the necessary rigor. Harnessing the power of crowd-sourcing will give us the ability to process large volumes of plots. The process for developing the protocol for assessing differential expression will be as follows:
+
+\vspace{-0.1in}
+\begin{enumerate} \itemsep -0.05in
+%\item{Create Lineup Data:} assuming that at least two variables, $X$ and $Y$ are involved in the design, we create data for a lineup of size $m$ by  creating  $m-1$ permutations of $Y$ or, in the case of a simulation study, drawing $m-1$ samples of size $n$ (the number of rows in the data) from the null distribution. Add the original data to the lineup data randomly between 1 and $m$. 
+\item{{\bf Pull data from established studies:} Download data from recognized archives and supplementary materials from a selection of publications from top tier journals. }
+\item{{\bf Conduct RNA-seq analysis, according to the published methods:} Obtain list of $M$ differentially expressed genes. }
+\item{{\bf Calculate set of permutations of experimental design, full exact set, if possible:} For each permuted set of designs, conduct RNA-seq analysis. }
+\item{{\bf Construct lineups for each of the differentially expressed gene:} Number of differentially expressed genes is determined by the FDR on the $M$ genes. A lineup will be produced for each of the $M$ genes where the null plots are the $m^{th}$ ($\leq M$) most significant gene produced by the testing on the permuted data. Multiple lineups for each gene will be created by using different selections of permutations.   }
+\item{{\bf Evaluate lineups:} Blocks of 10 lineups will generated by randomization methods, to be presented to independent observers enrolled from MTurk. Observers are asked to identify the plot in the set that has the biggest difference between groups.  Each observer will only be exposed to each lineup data once.}
+\item{{\bf Calculate $p$-values:} Each lineup will be evaluated by multiple individuals which will enable a visual $p$-value to be calculated for each of the $M$ genes. The signal strength for each gene and the time taken by individual to make a choice will be recorded. }
+\item{{\bf Compare results:} from original analysis with those obtained by the lineup protocol. }
+\end{enumerate}
+\vspace{-0.1in}
+
+% From JASA paper
+
+\subsection{Power of Design}\vspace{-0.1in}
+
+When deciding on the best way to present specific information discovered in data there can be many types of plots to choose from. The decision process is assisted by past experience, personal aesthetic preferences, the characteristics of the audience, and a good working knowledge of general perceptual strengths and weaknesses of particular displays \cite{cleveland:1984,heer:2010}. Perceptual studies are thinly spread for data visualization and will probably only cover very broad perceptual principles, primarily because they tend to be based solely on simulated data. In order to study perceptual principles in a controlled experimental setting simulated data is unavoidable. This provides principles that may not apply closely enough to a specific analysis task.  Faced with design decisions for a very specific task requires a closer level of detail. Focus groups \cite{Mazza07} can find small problems with designs and move us closer to a final handful of possible designs. Usability studies and case studies (e.g. \cite{Plaisant:2004}, \cite{Shneiderman:2006}) typically focus on the use of particular software for solving data exploration tasks. These approaches lack broad audience validity and objectiveness. Several papers indicate continuing issues arising with, and suggestions for improving, evaluation of information visualizations \cite{North:2006,Ellis:2006,Viegas:2006,Munzer:2009}. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.23\textwidth]{boxplot-conc.pdf}\includegraphics[width=0.23\textwidth]{density-conc.pdf}\includegraphics[width=0.23\textwidth]{dotplot-conc.pdf}\includegraphics[width=0.23\textwidth]{hist-conc.pdf}}
+\centerline{\includegraphics[width=0.95\textwidth]{power-exp2.pdf}}
+\caption{(Top) Four choices in plot design to show two group data: side-by-side boxplots, overlaid densities, side-by-side dotplots and stacked histogram. A simulation study using the lineup protocol was conducted to determine under which design people perceived mean differences more accurately. (Bottom) Overwhelmingly, side-by-side boxplots win out except when the sample size is really small, where the side-by-side dotplot is superior. }
+\label{two-groups}
+\end{figure*}
+
+Visual inference can be used to determine the best way to display data in practical problems for people to be able to perceive the key findings \cite{heike:2012}. We are going to make use of the signal strength gained from multiple viewings of a lineup in order to evaluate competing designs as follows:
+\vspace{-0.1in}
+\begin{enumerate} \itemsep -0.05in
+%\item{Create Lineup Data:} assuming that at least two variables, $X$ and $Y$ are involved in the design, we create data for a lineup of size $m$ by  creating  $m-1$ permutations of $Y$ or, in the case of a simulation study, drawing $m-1$ samples of size $n$ (the number of rows in the data) from the null distribution. Add the original data to the lineup data randomly between 1 and $m$. 
+\item{{\bf Create lineups from competing designs:} Using the same data, same lineup configuration, construct lineups of all competing designs. }
+\item{{\bf Evaluate lineups:} By presenting the lineups to independent observers. Assess both signal strength and time needed by individuals to come to a decision. Note that each observer should only be exposed to each lineup data once.}
+\item{{\bf Evaluate competing designs:} Differences in signal strength or time to decision are due to differences in the design.  }
+\end{enumerate}
+\vspace{-0.1in}
+
+As an example, consider four possible ways to display two sample data, side-by-side boxplots, stacked histogram, overplotted densities or side-by-side dotplots (Figure \ref{two-groups}). A simulation experiment was conducted to determine the best of the four designs. Sample size, mean different and proportion of observations in each group were varied in the simulation. Multiple lineups were generated for the different plot designs, and shown to subjects through Amazon's Mechanical Turk (\url{http://www.public.iastate.edu/~mahbub/feedback_turk5/homepage.html}). Results showed that side-by-side boxplots are almost universally better for reading off mean differences, except when the sample sizes are really small, and unbalanced, then side-by-side dotplots are superior.
+
+In this research we will examine biological plots, that are commonly used as alternatives for each other. The top tier journals will be surveyed to obtain a collection of examples. We will also work with local medical researchers in testing plot choices for current publications. One possible set of plots that are used for the same purposes is (1) a heatmap, (2) the dotplots used in Figure \ref{lineup-geno}.  Some researchers like to display expression as a heatmap, where color maps to expression level. Alternatively, some researchers display the expression as a point. Either all of the data can be displayed, or means and standard error bars are used. Prior cognitive research \cite{cleveland:1984} would suggest the side-by-side dotplots are superior to the heatmap, and also the standard error bars. However this is yet to be tested. This work will result is some guidelines for producing effective plots of biological data. 
+
+\subsection{Small Sample Size, Big Data}\vspace{-0.1in}
+
+%Rabbit example
+
+Big data can come in small packages. A lot of medical research involves detailed measurements on a small collection of subjects. Analyzing this data can be greatly assisted by better use of graphics. The lineup protocol provides the framework to do testing when little formal statistical inference is available, perhaps like having an expert to read echocardiograms.
+
+To illustrate usage, we look at data from an experiment conducted to study heart failure  \cite{sarah:2011}. Renal blood flow (RBF) and blood pressure (BP) were measured on several rabbits over time.  In one group of rabbits measurements were taken after heart failure (HF)  was induced, and the other group were controls. It is hypothesized that after induction of heart failure the circulation is affected. To examine the relationship between BP and RBF one would make a phase plot, that shows the two measurements with values linked by time (Figure \ref{rabit-phase}).  These are difficult patterns to quantify, but looking at plots can be helpful. In this phase plot, you can see that generally BP is around 80-90 and RBF is a little lower than 40. At two times one of the two measurements drops dramatically, and at one time both drop together. To understand how the two variables are related to heart failure we would examine these temporal traces for several recordings. 
+
+%Usually RBF and BP were plotted over time to observe the differences between healthy and HF rabbits. While these one dimensional time series plots display some pattern the actual continuous plot is chaotic. To have a better look on this chaotic time series phase plots are used. It provides the insight of internal relationships of the variables and displays a global view of the health status. The phase plot is obtained creating the path over time through the scatterplots of RBF vs BP as shown in Figure \ref{rabit-phase}. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.45\textwidth]{rabbit_time.pdf}\includegraphics[width=0.35\textwidth]{rabbit_phase.pdf}}
+\caption{(left) Time series plot of RBF and BP of rabbit data. (Right) Phase plot of RBF and BP shows the overall health pattern of the Rabbit.}
+\label{rabit-phase}
+\end{figure*}
+
+%Each plot in the lineup in Figure \ref{rabbit-lineup} shows the phase plots of 22 rabbits. The red color indicates rabbits with induced heart failure while the green color indicates healthy rabbits. One of the plots is the observed plot and the rest of the 19 plots are generated by randomizing the color structure. Can you find the observed plot? It is very difficult to detect the observed plot (actual location = $4^2+1$). This indicates that observed differences in the phase plots between healthy and heart failure rabbits are not statistically significant.
+
+Figure \ref{rabbit-lineup} shows a lineup of phase plots for recordings from one rabbit whose vital signs were recorded six times, three when heart failure was induced, and three without. The color represents induced heart failure or not. One of the ten phase plots shows the actual data, and the remainder are null plots by permuting the heart failure condition labels. It is a small sample so there are only ten possible permutations. Observers would be asked to pick the plot that has the biggest difference between the two colored groups.  The actual data here is shown in plot number five.  Readers may be tempted to pick plot six, or plot nine. The data suggests that the results are not entirely clear cut, that there was one recording where the rabbit had BP and RBF measurements under control conditions that were similar to the values when heart failure was induced. Using a lineup like this enables the complexities of the data to be incorporated into the testing, that can take into account differences in the variation as well as location. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.95\textwidth]{figures/rabbit-7013-lineup-5.png}}
+\caption{Phase plot of BP and RBF for one rabbit, measured multiple times, under two conditions indicated by color. Which plot shows the most separation between red and blue color groups? (See the text for the location of the actual data plot.)}
+\label{rabbit-lineup}
+\end{figure*}
+
+%**** Explain how we will use Amazon's Mechanical Turk
+
+\vspace{-0.1in}
+\begin{enumerate} \itemsep -0.05in
+\item{{\bf Collect data: } Work closely with medical colleagues to select a set of data sets that is creating difficulties for analysis.  }
+\item{{\bf Conduct visual inference:} By constructing lineups, loading on to MTurk for evaluation, calculating $p$-values and signal strength. }
+\end{enumerate}
+\vspace{-0.1in}
+
+\subsection{Planned Mechanical Turk Use}\vspace{-0.1in}
+
+There are two ways we plan use MTurk: (1) for identifying the better visualization of biomedical data, we will upload the lineups using our system for evaluation by the people from MTurk, (2) to provide a web application where researchers in the biomedical community will be able to upload lineups for evaluation. The web application will automatically recruit people from the MTurk web site using their credentials in MTurk web site which is necessary for processing the payment of the MTurk workers. The cost of engaging people to evaluate lineups on MTurk is very small, thus far we have paid on the order of 50c for completing a block of ten lineups. For the web service, we envision that there will be a certain number of lineups that a research can have evaluated for free, after which a nominal fee would be charged to cover operating costs of the site. Figure \ref{workflow} illustrates the work flow for evaluating lineups, and storing data.
+
+%**** This section needs more details about costs of using the service. How much will we charge for uploading lineups? Provide a certain number for free, and then just to cover maintenance. 
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.8\textwidth]{application_work_flow.pdf}}
+\caption{Illustration of the work flow for uploading lineups, having them evaluated, collecting and analyzing the data.}
+\label{workflow}
+\end{figure*}
+
+\subsection{Timeline}\vspace{-0.1in}
+
+
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.97\textwidth]{timeline.pdf}}
+\caption{Schedule of planned research tasks. }
+\label{timeline}
+\end{figure*}
+
+%Year 1: Pilot study for RNA-Seq data, collect data sets for RNA-Seq and small sample problems, conduct comparison test of heatmaps against dotplots
+
+%Year 2: Conduct full scale testing of RNA-Seq data, collect samples of commonly used biological plots for further plot design guideline development, beta test lineup web service, publish results of RNA-seq studies, and small sample size studies. 
+
+%Year 3: Fully operational web service for evaulating lineups, guidelines for biological plot construction completed, publication of remaining work. 
+
+
+\newpage
+\bibliography{references}
+
+\end{document} 
+
+***********
+Suppose you are analyzing RNA-Seq data for a genome having 60000 genes and willing to use multiple tools in order to decide on interesting genes. {\em EdgeR} \cite{edgeR:2010} reports 320 significantly expressed genes, {\em deseq} \cite{deseq:2010} reports 823 significantly expressed genes, {\em Cufflinks} \cite{cufflink:2012} returns 1277 significantly expressed genes, and {\em BaySeq} \cite{bayseq:2010} reports 461 significantly expressed genes. Overall, only 20 genes are reported by all procedures, and there are only 80 genes reported by three of the four procedures. We want to identify the genes that are ``really'' differentially expressed, missing as few as possible, but yet, avoid genes that look like but are {\bf NOT} really differently expressed. This work is going to help sort through the problem of conflicting results from different methodology and selecting statistically significant genes with larger effect size. 
+
+Figure \ref{top-genes} illustrates one aspect of the research objectives. It shows the top 25 genes for a $2\times 2$ factor RNA-Seq data experiment on soybean plants, as chosen by edgeR. The experiment was conducted at Iowa State University, and full results published \cite{Atwood}. From top left to bottom right, reading across the rows, the genes are in order of the smallest to largest $p$-value. There are two genotypes (emptyvector (EV) and RPA shown in color), for two conditions (iron sufficient and insufficient shown on the horizontal axis). Log count (shown vertically) is used to measure the response of each gene to iron condition. The plot is a classical interaction plot, designed originally to study how the response changed for different levels of the factors. Here the primary question is whether genes from RPA expressed or repressed plants respond differently in response to iron stress, with particular emphasis on RPA. To obtain the $p$-values a negative binomial model was fit, followed by a set of contrasts that measured significant RPA response but insignificant EV response. For each of the genes selected here, the $p$-values are measuring significant change in the RPA response for the different iron conditions, that is, the blue line is steep but the red line is fairly flat, and the variability from one replicate to another is small. In many of the top genes it is questionable that we should really consider the pattern to be significant. For some, it should definitely not be, because the significance is based entirely on the extreme value of one replicate.  
+
+%\begin{figure*}[htp]
+%\centerline{\includegraphics[width=0.99\textwidth]{ranked_gene_expression.pdf}}
+%\centerline{\includegraphics[width=0.99\textwidth]{expression-ordered.pdf}}
+%\centerline{\includegraphics[width=0.85\textwidth]{figures/topgenes-gilad.pdf}}
+%\caption{Change this caption....Interaction plots of the top 25 genes (top left to bottom right) according to the $p$-values from an edgeR analysis of RNA-Seq data collected on soybean plants. Two genotypes are shown (EV and RPA), and the plants are grown under two iron conditions, with several biological replicates made for each treatment.  Do you think that some of the genes not really differentially expressed?} 
+%\label{top-genes}
+%\end{figure*} 
+
+What do you do? %It doesn't seem practical to conclude that some of the genes reported to be statistically significant (numerically), really are differentially expressed. 
+A lot of number crunching is done in order to get to this stage in the analysis. Reads are cleaned, mapped and aligned to the genome, counted, dispersion is estimated, and shrunk in conjunction with the dispersion of other genes, to evaluate the strength of the difference in counts between treatments. The methods are very well studied, and build from a solid foundation of more than a decade of established researchers tackling analytics for these high-throughput data collection procedures. What is relatively a simple test procedure when just one is needed, becomes much more complicated when so many tests are made. More tools are needed in order to resolve situations like this that occur relatively frequently in high-throughput results. Deciding importance or lack based on plotting the data, is important for detecting issues with the results, but lacks objectivity. Note that, no out-of-the-box analysis packages even make it easy to look at the data, so all of the genes in Figure \ref{top-genes} would be called significant based on $p$-value, so at the very least we need better tools for making the basic plots of the data.  %For this analysis, our team plotted the data for every single significantly expressed gene, and manually ruled out genes that could not possibly be considered to be differentially expressed. This is too subjective! What is needed is to make these comparisons in the context of what might be seen in purely random data, that is, if there is no real differential expression what are the expression patterns that might be seen.
+
+To provide rigor and objectivity, we are going to use randomization methods in association with visual methods. Plotting the data is a very important, but under-utilized part of high-throughput data analysis. Plots of the data will be compared with plots of data generated under the assumption that there is no differential expression. This will produce a mountain of plots, which will be processed with the crowd-sourcing tools of Amazon's Mechanical Turk \cite{turk}. There are several substantial gains to be achieved by the research:
+\vspace{-0.1in}
+\begin{itemize} \itemsep -0.05in
+\item %The interaction plot used in Figure \ref{top-genes} is an example of a classical plot designed to study results of a factorial design. This work will bring historical research into the high-throughput cotnext, and allow   
+Visual methods can be used to examine results for many different types of experimental designs, and can still be made even when a statistical test is not available. 
+\item In order to find the ``best'' genes, significant differential expression is often chosen by applying two measuring sticks orthogonally: $p$-value and fold change. This research has the potential to provide results that intrinsically picks the genes that have the largest effect size, effectively combining fold change and $p$-value.
+\item Classical experimental design diagnostic plots can be applied to high-throughput data analysis.
+\item With crowd-sourcing, these methods will engage the public in the biological revolution.
+\end{itemize}
+\vspace{-0.1in}
+
+\subsection{Planned Research}
+
+This research will be conducted using several complementary approaches:
+\vspace{-0.1in}
+\begin{enumerate} \itemsep -0.05in
+\item Develop visual inference methods to evaluate the significance of expression of genes in RNA-Seq data. We expect that the process will roughly be as follows, (i) conduct the analysis with an existing approach such as that provided by the edgeR software, (ii) sort genes by $p$-value, or equivalent metric, (iii) permute experimental design, re-conduct analysis, and obtain ordering of genes based on the $p$-values from this randomization, repeat $(m-1)$ times to get null sets, (iv) make lineups of plots of each gene agains the $(m-1)$ null sets respecting $p$-value rank order, (v) post lineups on MTurk for evaluation, with observers evaluating blocks of 10 lineups, (vi) compute $p$-values and report. Because the randomization is done just once for each null set producing the top N genes, testing is similar to that for order statistics \cite{orderstats}, which is simultaneously testing for structure in the top N genes. The lineups in Figures \ref{lineup-geno}, \ref{lineup-interaction} are testing just the top gene, the most extreme structure in the data. In this new work we will examine testing the top $N$ genes for structure. With this new work, we expect to be able to say whether gene 4 (Glyma06g03100, Figure \ref{top-genes}) really is not interesting, with a significance quantification.
+
+\item Evaluate and validate the results obtained from visual inference against existing approaches for RNA-Seq data. This will involve using simulation to generate data with known structure, and also data from results of published research. (See the use study below.)
+\item Develop a resource that will allow researchers to post lineups of their data, to be evaluated by Turk workers, and return results that include $p$-values and effect size estimates for the significance of structure. Careful instructions will be given on how to produce the null plots, and formulate questions so that the visual inference is valid. This will be achieved through a web application. The process is illustrated in Figure \ref{application_work_flow}.
+\begin{figure*}[htp]
+\centerline{\includegraphics[width=0.75\textwidth]{application_work_flow.pdf}}
+\caption{Planned web application to upload lineups and get them evaluated by Amazon Mechanical Turk workers. The application will provide $p$-values based on evaluation data. Application user can save all the evaluation data and $p$-values for each lineup uploaded. The payment will be processed through the web application.}
+\label{application_work_flow} 
+\end{figure*}
+
+\item Develop curriculum material for helping to understand multiple testing, dispersion estimation, statistical significance and effect size. This material will make inferential statistical methods accessible to a broader community. Lineups show the data in a field of what the plots might look like if there is really nothing to see. We will develop curriculum material for biology courses with visual explanations which will help the next generation of students get up to speed quickly with statistical inference in massive multiple testing problems. The effectiveness of the material will be tested using a paired sample experiment, where subjects are tested for knowledge ahead of completing one of two modules, one using traditional material for teaching inference, and the other using this new material, and then tested again upon completion.
+\end{enumerate}
+\vspace{-0.1in}
+
+Two collaborators will work with us on this research: Dr Michael Lawrence (Genentech) and Dr Michelle Graham (United States Department of Agriculture, Iowa State University Adjunct Professor). Dr Lawrence has collaborated with Dr Cook on initial visual inference research, and on development of analysis software for biological data (ggobi\cite{SDCB01,STLBC02,CS07,WLCBHS08}, rggobi\cite{rggobi,pipeline}, explorase\cite{explorase}, cranvas\cite{cranvas}, RGtk2\cite{RGtk2,RGtk2-book}, ggbio\cite{ggbio}). Dr Graham will collaborate on the biological application. She has many RNA-Seq data sets that can be used for test cases, and new data will be available on a continuing basis. Drs Cook, Majumder and Graham have collaborated on two published studies \cite{Atwood,tengfei:2013}. Students employed in the research on this grant will assist in the analysis of her data, so that we can do side-by-side comparison of different analysis methods.
+
+\subsection{Use Study}
+
+By 2030, world agricultural production must increase by 60\% to feed an additional two billion people. Production will be constrained by insufficient land, droughts, floods, nutrient stress and disease. Soybean is the second largest crop in the US, grown for protein and oil to be used for food, feed and fuel.  Soybean represents 57\% and 66\% of the world's oil seed and protein production (\url{http:/www.soystats.com}). This research will integrate into the soybean ({\em Glycine max}) investigations conducted by Dr Graham's lab.
+
+Dr Graham's lab has a five year plan to provide data and resources to increase soybean production by mitigating losses due to pests, pathogens and nutrient stress, through identifying genetic factors that increase yield. They are willing to share large volumes of their data, primarily RNA-Seq data, and include our procedures in the new studies. They couple virus-induced gene silencing (VIGS) and RNA-Seq to examine connections between the gene networks of interest and response to environment.
+
+%\subsection{Creating Resources for the Community}
+
+
+%What are your potential contributions to developing human resources in science & engineering at postdoc, graduate, and undergrad levels?
+%\begin{enumerate} \itemsep 0in \topsep 0in
+%% Care in construction of graphics
+%\item 
+%%Use of protocols for graphical significance testing might have positive effects on improving
+%%  statistical graphics used in the community. Because the analyst is
+%%  forced to think about the null hypothesis associated with a plot, it
+%%  may hone their abilities to design or choose appropriate graphics for their
+%%  tasks. 
+%  With additional work, use of good principles in constructing
+%  plots might also be improved: pre-attentive plot elements for the
+%  data, attentive plot elements for grids and axes to allow look up
+%  when needed. 
+%%
+%% Helping in understanding principles of hypothesis testing
+%\item
+%% wide-spread, easy
+%%%
+%\end{enumerate}
+
+
+
+\section{Broader Impact and Diversity}
+
+This research will provide tools to improve the quality and replicability of results from high-throughput studies. Although, the focus is on RNA-Seq data it is expected that the approach will apply to many other types of bioinformatics problems. Research will be disseminated through the web, the Bioconductor project (\url{http://www.bioconductor.org}), published articles, possibly a Coursera (or equivalent) module. The PI has a track record or producing widely utilized open source software. Whenever possible, women and under-represented minorities will be engaged as research students. The PI is a senior female researcher, cognizant of the difficulties in navigating the research community, and very interested in making it easier for young, and especially minority students, find their niche in the research world. The co-PI is a beginning researcher. 
+
+\section{Plan of Work}\vspace{-0.1in}
+
+\begin{tabular}{lp{5.5in}}
+Year & Research \\\hline
+2014-5 & Run the first MTurk experiment on the existing RNA-Seq data examining response to iron stress, to determine visually significant genes. Compare these results to those obtained by {\em edgeR} and {\em CuffLinks}. Develop simulation set up to test the process under controlled conditions. Identify data sets with collaborator, having known results, with which to compare with results from the visual inference. \\
+2015-6 & Develop tools for others to use, start on curriculum material. Test out curriculum material with a selected bioinformatics course. Conduct more MTurk experiments with the new data sets, and compare and contrast results. \\
+2016-7 &  Web resource fully functional and ready to accept lineups from other researchers, with detailed instructions. Curriculum material refined. Conduct experiment to test curriculum material. Software for producing lineups for common scenarios constructed and submitted to Bioconductor. Document how the visual inference techniques will extend to other types of high-throughput data.\\
+\end{tabular}
+
+%\mm{The Holland Computing Center (HCC) provides supercomputing resources, both facilities and expertise, to the University of Nebraska system. It's most powerful machine is located at Peter Kiewit Institute (PKI) at Omaha. Tusker, a cluster with 6656 compute cores and capable of 43.3 TeraFlops (trillion floating point operations per second), was installed in March of 2012.  Firefly, originally the 43rd fastest machine in the world, is still in service at PKI as well.  Both are connected to the outside world at 10 gigabits per second. There are two nodes in Tusker with 512GB of RAM per node. There are other clusters located in University of Nebraska at Lincoln campus that are accessible from Omaha campus. The 332 node Production-mode LINUX cluster, Red, located at Lincoln has 3PB of raw storage space.}
+
+% moved to the front
+
+
+%The three PIs have a longstanding and strong record of collaborative research in data visualization. Besides phone and email, we correspond in a weekly online meeting through Google chat. To date, we have averaged site visits approximately every two months. This summer, we are planning on exchanging an undergraduate student from the lab at Iowa State with Rice University.
+
+%At Iowa State University both PIs are part of the faculty of the Virtual Reality Application Center, which provides us with unique facilities in modern graphical technology, such as touch-table devices, or the C6 cave, and the full resources of interdisciplinary colleagues close at hand in nearby offices. The Center for Survey Statistics and Methodology is also located at Iowa State and has very close ties to the Statistics Department. We will be able to use the Center's resources for implementing the studies necessary for the project.
+
+%Co-PI Wickham at Rice University is the author of the general visualization package ggplot2, which is based on Wilkinson's ``The Grammar of Graphics'' (1999). ggplot2 has a large user community of more than 200 active members and is currently growing at a pace of 50 members a month. ggplot2 will be the main package for pilot implementations automating tests for graphical significance. 
+
+%
+
+\section{Results from Prior NSF Support}\vspace{-0.1in}
+ 
+DMS NSF-Statistics award 0706949: Statistical Graphics Research in Association with GGobi funded from June 6 2007 to May 31 2010. This research has resulted in the 6 journal publications, 2 book chapters (one on education, the other on data mining), 1 book with corresponding web site containing teaching material and videos, 2 newsletter articles, 1 popular magazine article, an encyclopedia entry, a discussion to an invited article on the future of statistical computing, 6 software packages (including 5 R packages). Three graduate students have been supported and four undergraduates have been involved in research. The PIs have delivered 13 invited talks at national and international locations. 
+% Hobbs et al, RSS, plumbing, explorase, kyung
+% gold standards, ggobi book, caragea chapter
+% Schloerke et al, rggobi newsletter, Plus, database enc, Wilkinson discussion
+% ggobi software, support for chromatoplots, geozoo, classifly,
+% clusterfly, meifly
+% web sites: teaching material/videos
+% supported 3 grad students, 4 undergrads
+% talks: 11
+%%resulting publications: the book,
+% invited JRSS paper, case studies hack-at-it
+\\
+DMS NSF-Statistics award 1007697: Collaborative Research: Inference for Statistical Graphics. Hofmann PI, Cook Co-PI \$283,139. 9/1/2010-8/31/2013. This grant has funded two graduate students and one undergraduate research assistant. Both graduate students have won awards from the American Statistical Association Statistical Graphics section for their initial papers \cite{majumder:2013,niladri:2012}. Another paper \cite{hadley:2010} was awarded best paper at InfoVis '10. One R package has been produced \cite{nullabor}. In addition, a total of 11 Amazon Turk \cite{turk} experiments have been conducted. Three assessed the value of graphical inference in relation to classical statistical tests. Two were conducted to examine the assess the best plot design for communicating results from another study. Three were conducted to study real applications, one on RNA-Seq data~\cite{tengfei:2013}, and the other two on diagnostics for hierarchical linear models~\cite{loy}. One study examined the effect of high dimensions on detection of structure in supervised classification problems~\cite{niladri-compstats}. Eye-tracking experiments \cite{zhao:2012} were done on lineups to determine how people read lineups. A primary finding from the results is that having people evaluate data plots mirrors the conventional statistical test results, but has the advantage that unexpected types of structure can be detected and quantified in a rigorous manner.
+
+
+%
+% 
+%If any PI or co-PI identified on the project has received NSF funding in the past five years, information on the 
+%award(s) is required.  Each PI and co-PI who has received more than one award (excluding amendments) must 
+%report on the award most closely related to the proposal.  The following information must be provided:  
+% 
+%(a) the NSF award number, amount and period of support;  
+% 
+%(b) the title of the project;  
+% 
+%(c) a summary of the results of the completed work, including, for a research project, any contribution to the 
+%development of human resources in science and engineering;  
+% 
+%(d) publications resulting from the NSF award;  
+% 
+%(e) a brief description of available data, samples, physical collections and other related research products 
+%not described elsewhere; and  
+% 
+%(f) if the proposal is for renewed support, a description of the relation of the completed work to the 
+%proposed work.  
+% 
+
+%
