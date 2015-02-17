@@ -1,0 +1,229 @@
+\documentclass{article}
+
+\begin{document}
+
+Customer spending patterns 
+
+Question: What is the driving force to what a customer is willing to pay, and how can we use it to our advantage?
+
+Approach: We will do data exploration. What trends exist? Is there any obvious significance in our data? Regression tree vs. logistic regression for a possible pricing model that will allow for predictions in the future.
+
+The Big Bang: An interactive tool that gives a user diagnostics in which will allow a buisness user to understand trends and model predictions of ranges of values in which a customer is likely to purchase.
+
+\begin{abstract}
+Central to development of society is transportation, more specifically freight and good transportation. As our society has grown so too has our technology. Currently technology and data is growing at an alarming rate. Petabytes of information exsists, and few people know how to utilize it. Databases have become massive and extremely expensive. For multiple reasons: security, confidentiality, and many others; companies are not willing to move their data to high efficiency data storage centers (such as Hadoop). Transportation data is collected at extremely high rates, which is more than a single person can analyze. It has become crutial to squeeze as many pennies out of the data as possible. Currently intermodal (multiple means of transporting goods) companies have flat rate pricing systems, but it is their desire to incorrporate a more dynamic pricing model which utilizes statistical methods and data visualization. It is this projects goal to attempt to understand the consumer of intermodal transportation services and develop a deployable interactive tool in which we can interactively observe consumers buying habits.
+\end{abstract}
+
+\section{Introduction:}
+The most essential part of big data is ensuring reproducibility of data products by any (business or otherwise) user. This is a difficult task. Everyone is different, and no two people have the exact same skills or the same understanding of data. However, for any study it becomes crutial to understand the data, how it is stored, and where it is coming from. In this article we will first define some terms that are common to the transportation business. Then, we will explore the data in order to fully understand everything that will be presented in this project. Last, we will analyze the data, create a data product, and will discuss the results. \\
+
+\subsection{Understanding Intermodal Transportation}
+\begin{enumerate}
+Transportation business is extremely complicated. Millions of moving and working parts are constantly in motion. Each part can be collected and stored as observable data. Clearly any data from such a complicated industry needs to have a common language. So, we must first define a few common transportation terms. These words will be used throughout the paper and are essential to understanding our objectives.
+
+\item
+Intermodal transportation - Intermodal transportation is the movement of freight by more than one type of carrier. Carriers include trains, trucks, bardge, etc. \\
+\item
+Drayage - Location where freight is moved from one transportation type to another: train to truck, truck to bardge, or any other transportation combination. \\
+\item
+Ramp - defined by city, state, and three letter acronym giving location and specific ramp for the transaction. \\
+\item
+Broker LOB - Stands for "broker type and line of business". There are three main catagories: marketing firm, brokerage, intermodal company. \\
+\item
+Bill to name - Company which the transportation services were purchased from. Often when dealing with brokers they act as an intermediate between two companies in order to find the cheapest means of transporation. \\
+\end{enumerate}
+
+\subsection{Understanding Intermodal Data}
+
+This data is coming from a door to door intermodal company, meaning that each purchase will consist of transporation where from origin, truck delivers to train, then train delivers to truck, and last truck delivers to destination. Due to the extreme levels of confidentiality in which the data was originally stored, we have eliminated all columns of which could be identified to any individual. We will show a few of the rows.
+
+<<>>=
+IMCDataSet<-readRDS("IMCDataSet.rds")
+head(IMCDataSet,3)
+str(IMCDataSet)
+@
+
+Even though the column names have been simplified, this is still a complicated topic. We will define a few topics which will be common themes throughout this research. \\
+
+<<echo=FALSE>>=
+library(dplyr)
+library(reshape2)
+library(data.table)
+library(maps)
+library(stringr)
+library(ggmap)
+library(ggplot2)
+library(ggvis)
+library(knitr)
+library(RODBC)
+library(tm)
+library(shiny)
+library(maps)
+library(mapproj)
+library(quantmod)
+library(lubridate)
+library(scales)
+library(caret)
+library(class)
+@
+
+
+\section{Exploration of the data}
+
+
+
+Exploration of the data is a major component of this project. 
+\begin{figure}[H]
+<<echo=FALSE, fig.cap="This is a honeycomb plot of profit per mile versus cost per mile. It demonstrates the density of where individual would buy.">>=
+profitCostMod2<-readRDS('profitCostMod.rds')
+#Hexigonal Plot
+ggplot(profitCostMod2,aes(ProfitMile,CostMile),alpha=0.1)+
+  stat_binhex(bins=45)+
+  scale_fill_continuous(low="blue",high="red")+
+  facet_wrap(~Buy,ncol=1)+
+  labs(x="Profit Per Mile", y="Cost Per Mile")
+@
+\end{figure}
+
+
+
+\begin{figure}[H]
+<<echo=FALSE, fig.cap="This plot over time shows that MTR buyers are different than IMC and BRK buyers during the summer months.">>=
+profitCostMod2$Buy<-ifelse(profitCostMod2$Buy=="Load",1,0)
+profitCostMod8<-profitCostMod2
+profitCostMod8$TRUNC.QREC.CREATE_DT.<- month(mdy(profitCostMod8$TRUNC.QREC.CREATE_DT.), label= TRUE, abbr = FALSE)
+
+profitCostMod8.1b<-profitCostMod8 %>%
+       select(Buy,Search,TRUNC.QREC.CREATE_DT., BROKER_LOB) %>%
+       group_by(TRUNC.QREC.CREATE_DT. ,BROKER_LOB) %>%
+       summarise(Buy=sum(Buy),Search=sum(Search)) %>%
+       filter(BROKER_LOB != "#N/A") %>%
+       filter(BROKER_LOB != 0) %>%
+       mutate(Buyrate=Buy/Search)
+
+head(profitCostMod8.1b)
+
+ggplot(profitCostMod8.1b, aes(TRUNC.QREC.CREATE_DT., Buyrate, group=BROKER_LOB, color=BROKER_LOB))+
+  geom_path()+
+  geom_point()+
+  labs(title="Monthly Buyrates and Customer Types", x="Month", y="Buyrate")
+@
+\end{figure}
+
+\begin{figure}[H]
+<<echo=FALSE, fig.cap="Plot1: This is a plot of three overlapping contour plots show that the pricing is similar for all three of the company types. Plot2: Faceted we can see that each of the the three groups that are priced have a linear trend. This is evidence that Cost is a flat rate.">>=
+profitCostMod3a<-profitCostMod8 %>%
+  group_by(BILL_TO_NAME, BROKER_LOB, BILL_TO_CITY) %>%
+  summarise(Buy=sum(Buy),Search=sum(Search), Total.Cost=sum(TOTAL_COST), 
+            Total.Revenue=sum(TOTAL_REVENUE),Profit=sum(COC)) %>%
+  filter(Search>20) %>%
+  filter(BROKER_LOB != "#N/A") %>%
+  filter(BROKER_LOB != 0) %>%
+   filter(Profit<30000) %>%
+  mutate(Buyrate=Buy/Search) %>%
+  arrange(desc(Buyrate)) %>%
+  arrange(desc(Buy))
+
+ggplot(profitCostMod3a, aes(Total.Cost,Profit, color=BROKER_LOB, group=BROKER_LOB))+
+  geom_density2d()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  labs(title="Total Cost vs. Profit ", x="Total Cost", y="Profit")
+
+ggplot(profitCostMod3a, aes(Total.Cost, Profit, group=BROKER_LOB))+
+  geom_density2d()+
+  geom_smooth(method="lm", se=F)+
+  facet_wrap(~BROKER_LOB)+
+  labs(x="Total Cost", y="Profit")+
+  scale_x_continuous(labels=seq(0,6,2))+
+  scale_y_continuous(labels=seq(0,40,10))  
+
+  
+ggsave("Contour_filtered1.png", width = 14, height = 5, dpi=200)
+
+ggplot(profitCostMod3a, aes(Total.Cost, Profit, group=BROKER_LOB))+
+  geom_density2d()+
+  facet_wrap(~BROKER_LOB)+
+  labs(x="Total Cost", y="Profit")+
+  scale_x_continuous(labels=seq(0,5,1))+
+  scale_y_continuous(labels=seq(0,30,10))
+
+
+ggsave("Contour_filtered2.png", width = 11, height = 4, dpi=200)
+
+
+@
+\end{figure}
+
+
+\begin{figure}[H]
+<<echo=FALSE, fig.cap="US interactive map">>=
+mdat<-map_data("state") 
+
+
+mdat %>% 
+  group_by(group) %>% 
+  ggvis(x=~long,y=~lat,
+#          stroke := input_slider(10,100),
+#          opacity := input_slider(0,1)
+        ) %>%
+  layer_paths() 
+@
+
+\end{figure}
+
+
+\section{Statistical Analysis:}
+<<>>=
+head(profitCostMod8)
+head(profitCostMod8.1b)
+head(profitCostMod2)
+
+Xiangspairs<-profitCostMod2 %>%
+  group_by(BILL_TO_NAME, ORIG_RAMP_NAME, DEST_RAMP_NAME) %>%
+  summarise(Buy=sum(Buy),Search=sum(Search), Total.Cost=sum(TOTAL_COST), 
+             Total.Revenue=sum(TOTAL_REVENUE),Profit=sum(COC)) %>%
+   filter(Buy==1) %>%
+#   filter(Search>20) %>%
+#   filter(BROKER_LOB != "#N/A") %>%
+#   filter(BROKER_LOB != 0) %>%
+#    filter(Profit<30000) %>%
+  mutate(Buyrate=Buy/Search)
+
+head(Xiangspairs)
+
+
+set.seed(2345)
+trainIndex<-createDataPartition(Xiangspairs$BILL_TO_NAME, p=.8,
+                                list = FALSE,
+                                times=1)
+
+XiangsTrain<-Xiangspairs[trainIndex,]
+XiangsTest<-Xiangspairs[-trainIndex,]
+XiangsTrainLabs<-XiangsTrain[,9]
+
+dim(XiangsTrain)
+dim(XiangsTest)
+dim(Xiangspairs)
+
+lm.fit1<-lm(Buyrate~., data=XiangsTrain[5:9])
+summary(lm.fit1)
+
+lm.fit2<-lm(Buyrate~Search, data=XiangsTrain[5:9])
+summary(lm.fit2)
+@
+
+
+Loyal Customers
+
+High Demand Routes
+
+Loyal Customers on High Demand Routes
+
+Different Months?
+
+\section{Results}
+
+\section{Conclusion}
+
+
+\end{document}
