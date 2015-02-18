@@ -18,9 +18,9 @@ Central to development of society is transportation, more specifically freight a
 The most essential part of big data is ensuring reproducibility of data products by any (business or otherwise) user. This is a difficult task. Everyone is different, and no two people have the exact same skills or the same understanding of data. However, for any study it becomes crutial to understand the data, how it is stored, and where it is coming from. In this article we will first define some terms that are common to the transportation business. Then, we will explore the data in order to fully understand everything that will be presented in this project. Last, we will analyze the data, create a data product, and will discuss the results. \\
 
 \subsection{Understanding Intermodal Transportation}
-\begin{enumerate}
 Transportation business is extremely complicated. Millions of moving and working parts are constantly in motion. Each part can be collected and stored as observable data. Clearly any data from such a complicated industry needs to have a common language. So, we must first define a few common transportation terms. These words will be used throughout the paper and are essential to understanding our objectives.
 
+\begin{enumerate}
 \item
 Intermodal transportation - Intermodal transportation is the movement of freight by more than one type of carrier. Carriers include trains, trucks, bardge, etc. \\
 \item
@@ -37,15 +37,9 @@ Bill to name - Company which the transportation services were purchased from. Of
 
 This data is coming from a door to door intermodal company, meaning that each purchase will consist of transporation where from origin, truck delivers to train, then train delivers to truck, and last truck delivers to destination. Due to the extreme levels of confidentiality in which the data was originally stored, we have eliminated all columns of which could be identified to any individual. We will show a few of the rows.
 
-<<>>=
-IMCDataSet<-readRDS("IMCDataSet.rds")
-head(IMCDataSet,3)
-str(IMCDataSet)
-@
-
 Even though the column names have been simplified, this is still a complicated topic. We will define a few topics which will be common themes throughout this research. \\
 
-<<echo=FALSE>>=
+<<echo=FALSE,include=FALSE>>=
 library(dplyr)
 library(reshape2)
 library(data.table)
@@ -60,7 +54,7 @@ library(tm)
 library(shiny)
 library(maps)
 library(mapproj)
-library(quantmod)
+# library(quantmod)
 library(lubridate)
 library(scales)
 library(caret)
@@ -73,21 +67,20 @@ library(class)
 
 
 Exploration of the data is a major component of this project. 
-\begin{figure}[H]
+
 <<echo=FALSE, fig.cap="This is a honeycomb plot of profit per mile versus cost per mile. It demonstrates the density of where individual would buy.">>=
-profitCostMod2<-readRDS('profitCostMod.rds')
+profitCostMod2<-readRDS('profitCostMod2.rds')
 #Hexigonal Plot
 ggplot(profitCostMod2,aes(ProfitMile,CostMile),alpha=0.1)+
-  stat_binhex(bins=45)+
+#   stat_binhex(bins=45)+
   scale_fill_continuous(low="blue",high="red")+
   facet_wrap(~Buy,ncol=1)+
   labs(x="Profit Per Mile", y="Cost Per Mile")
 @
-\end{figure}
 
 
 
-\begin{figure}[H]
+
 <<echo=FALSE, fig.cap="This plot over time shows that MTR buyers are different than IMC and BRK buyers during the summer months.">>=
 profitCostMod2$Buy<-ifelse(profitCostMod2$Buy=="Load",1,0)
 profitCostMod8<-profitCostMod2
@@ -108,9 +101,8 @@ ggplot(profitCostMod8.1b, aes(TRUNC.QREC.CREATE_DT., Buyrate, group=BROKER_LOB, 
   geom_point()+
   labs(title="Monthly Buyrates and Customer Types", x="Month", y="Buyrate")
 @
-\end{figure}
 
-\begin{figure}[H]
+
 <<echo=FALSE, fig.cap="Plot1: This is a plot of three overlapping contour plots show that the pricing is similar for all three of the company types. Plot2: Faceted we can see that each of the the three groups that are priced have a linear trend. This is evidence that Cost is a flat rate.">>=
 profitCostMod3a<-profitCostMod8 %>%
   group_by(BILL_TO_NAME, BROKER_LOB, BILL_TO_CITY) %>%
@@ -148,14 +140,10 @@ ggplot(profitCostMod3a, aes(Total.Cost, Profit, group=BROKER_LOB))+
   scale_y_continuous(labels=seq(0,30,10))
 
 
-ggsave("Contour_filtered2.png", width = 11, height = 4, dpi=200)
-
+# ggsave("Contour_filtered2.png", width = 11, height = 4, dpi=200)
 
 @
-\end{figure}
 
-
-\begin{figure}[H]
 <<echo=FALSE, fig.cap="US interactive map">>=
 mdat<-map_data("state") 
 
@@ -169,7 +157,6 @@ mdat %>%
   layer_paths() 
 @
 
-\end{figure}
 
 
 \section{Statistical Analysis:}
@@ -211,7 +198,6 @@ summary(lm.fit1)
 lm.fit2<-lm(Buyrate~Search, data=XiangsTrain[5:9])
 summary(lm.fit2)
 @
-
 
 Loyal Customers
 

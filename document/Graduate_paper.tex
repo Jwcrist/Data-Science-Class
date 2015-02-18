@@ -1,0 +1,267 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+Customer spending patterns 
+
+Question: What is the driving force to what a customer is willing to pay, and how can we use it to our advantage?
+
+Approach: We will do data exploration. What trends exist? Is there any obvious significance in our data? Regression tree vs. logistic regression for a possible pricing model that will allow for predictions in the future.
+
+The Big Bang: An interactive tool that gives a user diagnostics in which will allow a buisness user to understand trends and model predictions of ranges of values in which a customer is likely to purchase.
+
+\begin{abstract}
+Central to development of society is transportation, more specifically freight and good transportation. As our society has grown so too has our technology. Currently technology and data is growing at an alarming rate. Petabytes of information exsists, and few people know how to utilize it. Databases have become massive and extremely expensive. For multiple reasons: security, confidentiality, and many others; companies are not willing to move their data to high efficiency data storage centers (such as Hadoop). Transportation data is collected at extremely high rates, which is more than a single person can analyze. It has become crutial to squeeze as many pennies out of the data as possible. Currently intermodal (multiple means of transporting goods) companies have flat rate pricing systems, but it is their desire to incorrporate a more dynamic pricing model which utilizes statistical methods and data visualization. It is this projects goal to attempt to understand the consumer of intermodal transportation services and develop a deployable interactive tool in which we can interactively observe consumers buying habits.
+\end{abstract}
+
+\section{Introduction:}
+The most essential part of big data is ensuring reproducibility of data products by any (business or otherwise) user. This is a difficult task. Everyone is different, and no two people have the exact same skills or the same understanding of data. However, for any study it becomes crutial to understand the data, how it is stored, and where it is coming from. In this article we will first define some terms that are common to the transportation business. Then, we will explore the data in order to fully understand everything that will be presented in this project. Last, we will analyze the data, create a data product, and will discuss the results. \\
+
+\subsection{Understanding Intermodal Transportation}
+Transportation business is extremely complicated. Millions of moving and working parts are constantly in motion. Each part can be collected and stored as observable data. Clearly any data from such a complicated industry needs to have a common language. So, we must first define a few common transportation terms. These words will be used throughout the paper and are essential to understanding our objectives.
+
+\begin{enumerate}
+\item
+Intermodal transportation - Intermodal transportation is the movement of freight by more than one type of carrier. Carriers include trains, trucks, bardge, etc. \\
+\item
+Drayage - Location where freight is moved from one transportation type to another: train to truck, truck to bardge, or any other transportation combination. \\
+\item
+Ramp - defined by city, state, and three letter acronym giving location and specific ramp for the transaction. \\
+\item
+Broker LOB - Stands for "broker type and line of business". There are three main catagories: marketing firm, brokerage, intermodal company. \\
+\item
+Bill to name - Company which the transportation services were purchased from. Often when dealing with brokers they act as an intermediate between two companies in order to find the cheapest means of transporation. \\
+\end{enumerate}
+
+\subsection{Understanding Intermodal Data}
+
+This data is coming from a door to door intermodal company, meaning that each purchase will consist of transporation where from origin, truck delivers to train, then train delivers to truck, and last truck delivers to destination. Due to the extreme levels of confidentiality in which the data was originally stored, we have eliminated all columns of which could be identified to any individual. We will show a few of the rows.
+
+Even though the column names have been simplified, this is still a complicated topic. We will define a few topics which will be common themes throughout this research. \\
+
+
+
+
+\section{Exploration of the data}
+
+
+
+Exploration of the data is a major component of this project. 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in gzfile(file, "{}rb"{}): cannot open compressed file 'profitCostMod2.rds', probable reason 'No such file or directory'}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in gzfile(file, "{}rb"{}): cannot open the connection}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(profitCostMod2, aes(ProfitMile, CostMile), alpha = 0.1): object 'profitCostMod2' not found}}\end{kframe}
+\end{knitrout}
+
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ifelse(profitCostMod2\$Buy == "{}Load"{}, 1, 0): object 'profitCostMod2' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'profitCostMod2' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in lapply(list(...), .num\_to\_date): object 'profitCostMod8' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'profitCostMod8' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(profitCostMod8.1b): object 'profitCostMod8.1b' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(profitCostMod8.1b, aes(TRUNC.QREC.CREATE\_DT., Buyrate, : object 'profitCostMod8.1b' not found}}\end{kframe}
+\end{knitrout}
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'profitCostMod8' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(profitCostMod3a, aes(Total.Cost, Profit, color = BROKER\_LOB, : object 'profitCostMod3a' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(profitCostMod3a, aes(Total.Cost, Profit, group = BROKER\_LOB)): object 'profitCostMod3a' not found}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggsave("{}Contour\_filtered1.png"{}, width = 14, height = 5, dpi = 200): plot should be a ggplot2 plot}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(profitCostMod3a, aes(Total.Cost, Profit, group = BROKER\_LOB)): object 'profitCostMod3a' not found}}\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): argument is missing, with no default}}\end{kframe}
+\end{knitrout}
+
+
+
+\section{Statistical Analysis:}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{head}\hlstd{(profitCostMod8)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(profitCostMod8): object 'profitCostMod8' not found}}\begin{alltt}
+\hlkwd{head}\hlstd{(profitCostMod8.1b)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(profitCostMod8.1b): object 'profitCostMod8.1b' not found}}\begin{alltt}
+\hlkwd{head}\hlstd{(profitCostMod2)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(profitCostMod2): object 'profitCostMod2' not found}}\begin{alltt}
+\hlstd{Xiangspairs}\hlkwb{<-}\hlstd{profitCostMod2} \hlopt{%>%}
+  \hlkwd{group_by}\hlstd{(BILL_TO_NAME, ORIG_RAMP_NAME, DEST_RAMP_NAME)} \hlopt{%>%}
+  \hlkwd{summarise}\hlstd{(}\hlkwc{Buy}\hlstd{=}\hlkwd{sum}\hlstd{(Buy),}\hlkwc{Search}\hlstd{=}\hlkwd{sum}\hlstd{(Search),} \hlkwc{Total.Cost}\hlstd{=}\hlkwd{sum}\hlstd{(TOTAL_COST),}
+             \hlkwc{Total.Revenue}\hlstd{=}\hlkwd{sum}\hlstd{(TOTAL_REVENUE),}\hlkwc{Profit}\hlstd{=}\hlkwd{sum}\hlstd{(COC))} \hlopt{%>%}
+   \hlkwd{filter}\hlstd{(Buy}\hlopt{==}\hlnum{1}\hlstd{)} \hlopt{%>%}
+\hlcom{#   filter(Search>20) %>%}
+\hlcom{#   filter(BROKER_LOB != "#N/A") %>%}
+\hlcom{#   filter(BROKER_LOB != 0) %>%}
+\hlcom{#    filter(Profit<30000) %>%}
+  \hlkwd{mutate}\hlstd{(}\hlkwc{Buyrate}\hlstd{=Buy}\hlopt{/}\hlstd{Search)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'profitCostMod2' not found}}\begin{alltt}
+\hlkwd{head}\hlstd{(Xiangspairs)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in head(Xiangspairs): object 'Xiangspairs' not found}}\begin{alltt}
+\hlkwd{set.seed}\hlstd{(}\hlnum{2345}\hlstd{)}
+\hlstd{trainIndex}\hlkwb{<-}\hlkwd{createDataPartition}\hlstd{(Xiangspairs}\hlopt{$}\hlstd{BILL_TO_NAME,} \hlkwc{p}\hlstd{=}\hlnum{.8}\hlstd{,}
+                                \hlkwc{list} \hlstd{=} \hlnum{FALSE}\hlstd{,}
+                                \hlkwc{times}\hlstd{=}\hlnum{1}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in createDataPartition(Xiangspairs\$BILL\_TO\_NAME, p = 0.8, list = FALSE, : object 'Xiangspairs' not found}}\begin{alltt}
+\hlstd{XiangsTrain}\hlkwb{<-}\hlstd{Xiangspairs[trainIndex,]}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'Xiangspairs' not found}}\begin{alltt}
+\hlstd{XiangsTest}\hlkwb{<-}\hlstd{Xiangspairs[}\hlopt{-}\hlstd{trainIndex,]}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'Xiangspairs' not found}}\begin{alltt}
+\hlstd{XiangsTrainLabs}\hlkwb{<-}\hlstd{XiangsTrain[,}\hlnum{9}\hlstd{]}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'XiangsTrain' not found}}\begin{alltt}
+\hlkwd{dim}\hlstd{(XiangsTrain)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'XiangsTrain' not found}}\begin{alltt}
+\hlkwd{dim}\hlstd{(XiangsTest)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'XiangsTest' not found}}\begin{alltt}
+\hlkwd{dim}\hlstd{(Xiangspairs)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'Xiangspairs' not found}}\begin{alltt}
+\hlstd{lm.fit1}\hlkwb{<-}\hlkwd{lm}\hlstd{(Buyrate}\hlopt{~}\hlstd{.,} \hlkwc{data}\hlstd{=XiangsTrain[}\hlnum{5}\hlopt{:}\hlnum{9}\hlstd{])}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in is.data.frame(data): object 'XiangsTrain' not found}}\begin{alltt}
+\hlkwd{summary}\hlstd{(lm.fit1)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in summary(lm.fit1): object 'lm.fit1' not found}}\begin{alltt}
+\hlstd{lm.fit2}\hlkwb{<-}\hlkwd{lm}\hlstd{(Buyrate}\hlopt{~}\hlstd{Search,} \hlkwc{data}\hlstd{=XiangsTrain[}\hlnum{5}\hlopt{:}\hlnum{9}\hlstd{])}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in is.data.frame(data): object 'XiangsTrain' not found}}\begin{alltt}
+\hlkwd{summary}\hlstd{(lm.fit2)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in summary(lm.fit2): object 'lm.fit2' not found}}\end{kframe}
+\end{knitrout}
+
+Loyal Customers
+
+High Demand Routes
+
+Loyal Customers on High Demand Routes
+
+Different Months?
+
+\section{Results}
+
+\section{Conclusion}
+
+
+\end{document}
