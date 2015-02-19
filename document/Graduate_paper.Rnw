@@ -72,7 +72,7 @@ Exploration of the data is a major component of this project.
 profitCostMod2<-readRDS('profitCostMod2.rds')
 #Hexigonal Plot
 ggplot(profitCostMod2,aes(ProfitMile,CostMile),alpha=0.1)+
-#   stat_binhex(bins=45)+
+  stat_binhex(bins=45)+
   scale_fill_continuous(low="blue",high="red")+
   facet_wrap(~Buy,ncol=1)+
   labs(x="Profit Per Mile", y="Cost Per Mile")
